@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var weeklyTableView: UITableView!
     @IBOutlet weak var habitTableView: UITableView!
     private let habits = [Habit(name: "Hello"), Habit(name: "World")]
     private let habitCellIdentifier = "habitCell"
