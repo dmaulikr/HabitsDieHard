@@ -39,8 +39,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let habit: Habit = habits[indexPath.row]
         habit.done = !habit.done
-        // todo
-        habitTableView.reloadData()
+        habitTableView.beginUpdates()
+        habitTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        habitTableView.endUpdates()
     }
 
     override func didReceiveMemoryWarning() {
