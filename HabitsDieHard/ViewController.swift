@@ -13,28 +13,42 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var habitTableView: UITableView!
     private let habits = [Habit(name: "Hello"), Habit(name: "World")]
     private let habitCellIdentifier = "habitCell"
+    private let weeklyCellIdentifier = "WeeklyTableViewCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         habitTableView.delegate = self
         habitTableView.dataSource = self
         habitTableView.reloadData()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        weeklyTableView.delegate = self
+        weeklyTableView.dataSource = self
+        weeklyTableView.registerNib(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
+        weeklyTableView.reloadData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return habits.count
+        if tableView == weeklyTableView {
+            return 1
+        } else {
+            return habits.count
+        }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(habitCellIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: habitCellIdentifier)
+        if tableView == weeklyTableView {
+            let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
+            return cell
+        } else {
+            var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(habitCellIdentifier)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: habitCellIdentifier)
+            }
+            let habit = habits[indexPath.row]
+            cell!.textLabel?.text = habit.name
+            cell!.backgroundColor = habit.done ? UIColor.greenColor() : UIColor.clearColor()
+            return cell!
         }
-        let habit = habits[indexPath.row]
-        cell!.textLabel?.text = habit.name
-        cell!.backgroundColor = habit.done ? UIColor.greenColor() : UIColor.clearColor()
-        return cell!
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -13,6 +13,8 @@
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
 		B3BAB0081D68727D00F20252 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB0071D68727D00F20252 /* Habit.swift */; };
+		B3BAB0111D68B95E00F20252 /* WeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */; };
+		B3BAB0121D68B95E00F20252 /* WeeklyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3BAB0071D68727D00F20252 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyTableViewCell.swift; sourceTree = "<group>"; };
+		B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				B30150021D675001001D860F /* LaunchScreen.storyboard */,
 				B30150051D675001001D860F /* Info.plist */,
 				B3BAB0071D68727D00F20252 /* Habit.swift */,
+				B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */,
+				B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */,
 			);
 			path = HabitsDieHard;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BAB0121D68B95E00F20252 /* WeeklyTableViewCell.xib in Resources */,
 				B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */,
 				B30150011D675001001D860F /* Assets.xcassets in Resources */,
 				B3014FFF1D675001001D860F /* Main.storyboard in Resources */,
@@ -138,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BAB0111D68B95E00F20252 /* WeeklyTableViewCell.swift in Sources */,
 				B3BAB0081D68727D00F20252 /* Habit.swift in Sources */,
 				B3014FFC1D675001001D860F /* ViewController.swift in Sources */,
 				B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */,
