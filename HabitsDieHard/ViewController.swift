@@ -30,14 +30,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: taskCellIdentifier)
         }
-        cell!.textLabel?.text = tasks[indexPath.row].name
+        let habit = tasks[indexPath.row]
+        cell!.textLabel?.text = habit.name
+        cell!.backgroundColor = habit.done ? UIColor.greenColor() : UIColor.clearColor()
         return cell!
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("selected")
+        let habit: Habit = tasks[indexPath.row]
+        habit.done = !habit.done
+        // todo
+        taskTableView.reloadData()
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
