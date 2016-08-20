@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var taskTableView: UITableView!
-    private let tasks = ["Hello", "World"]
+    private let tasks = [Habit(name: "Hello"), Habit(name: "World")]
     private let taskCellIdentifier = "taskCell"
 
     override func viewDidLoad() {
@@ -30,9 +30,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: taskCellIdentifier)
         }
-        cell!.textLabel?.text = tasks[indexPath.row]
+        cell!.textLabel?.text = tasks[indexPath.row].name
         return cell!
     }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        NSLog("selected")
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

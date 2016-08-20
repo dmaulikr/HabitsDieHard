@@ -12,6 +12,7 @@
 		B3014FFF1D675001001D860F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3014FFD1D675001001D860F /* Main.storyboard */; };
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
+		B3BAB0081D68727D00F20252 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB0071D68727D00F20252 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B30150001D675001001D860F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3BAB0071D68727D00F20252 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				B30150001D675001001D860F /* Assets.xcassets */,
 				B30150021D675001001D860F /* LaunchScreen.storyboard */,
 				B30150051D675001001D860F /* Info.plist */,
+				B3BAB0071D68727D00F20252 /* Habit.swift */,
 			);
 			path = HabitsDieHard;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BAB0081D68727D00F20252 /* Habit.swift in Sources */,
 				B3014FFC1D675001001D860F /* ViewController.swift in Sources */,
 				B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */,
 			);
@@ -286,6 +290,7 @@
 				B301500A1D675001001D860F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
