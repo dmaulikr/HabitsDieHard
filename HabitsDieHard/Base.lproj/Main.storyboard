@@ -32,7 +32,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="taskTableView" destination="WyV-k9-9UF" id="paS-uq-h6m"/>
+                        <outlet property="habitTableView" destination="WyV-k9-9UF" id="Ilr-qP-gZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
