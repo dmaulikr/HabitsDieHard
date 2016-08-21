@@ -23,10 +23,6 @@
                         <rect key="frame" x="63" y="8" width="54.5" height="82.5"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-Yy-As2">
-                        <rect key="frame" x="336" y="8" width="55" height="82.5"/>
-                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZX-NL-2Ox">
                         <rect key="frame" x="117" y="8" width="55" height="82.5"/>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,6 +38,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-Ae-FP9">
                         <rect key="frame" x="281" y="8" width="54.5" height="82.5"/>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-Yy-As2">
+                        <rect key="frame" x="336" y="8" width="55" height="82.5"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
                 <constraints>
@@ -118,7 +118,13 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="fridayView" destination="wN5-km-tiK" id="yoG-kH-p2Q"/>
                 <outlet property="mondayView" destination="1Gq-En-3Qx" id="rlN-uB-7tT"/>
+                <outlet property="saturdayView" destination="xxJ-Ae-FP9" id="WLO-Pa-OtO"/>
+                <outlet property="sundayView" destination="Vqi-Yy-As2" id="MRo-gk-6fk"/>
+                <outlet property="thursdayView" destination="HTW-Nk-avh" id="hdS-Sh-CcD"/>
+                <outlet property="tuesdayView" destination="TG1-hd-NVv" id="d7f-ac-BdD"/>
+                <outlet property="wednesdayView" destination="wZX-NL-2Ox" id="N2T-Bc-0L8"/>
             </connections>
             <point key="canvasLocation" x="300.5" y="402.5"/>
         </tableViewCell>

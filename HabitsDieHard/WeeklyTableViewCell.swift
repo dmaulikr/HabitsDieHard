@@ -10,12 +10,23 @@ import UIKit
 
 class WeeklyTableViewCell: UITableViewCell {
     @IBOutlet weak var mondayView: UIView!
-
+    @IBOutlet weak var tuesdayView: UIView!
+    @IBOutlet weak var wednesdayView: UIView!
+    @IBOutlet weak var thursdayView: UIView!
+    @IBOutlet weak var fridayView: UIView!
+    @IBOutlet weak var saturdayView: UIView!
+    @IBOutlet weak var sundayView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeeklyTableViewCell.dayTapped))
-        mondayView.addGestureRecognizer(gestureRecognizer)
+        let selector = #selector(WeeklyTableViewCell.dayTapped)
+        mondayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        tuesdayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        wednesdayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        thursdayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        fridayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        saturdayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        sundayView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
     }
 
     func dayTapped(gestureRecognizer: UIGestureRecognizer) {
