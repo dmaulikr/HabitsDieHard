@@ -9,10 +9,17 @@
 import UIKit
 
 class WeeklyTableViewCell: UITableViewCell {
+    @IBOutlet weak var mondayView: UIView!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeeklyTableViewCell.dayTapped))
+        mondayView.addGestureRecognizer(gestureRecognizer)
+    }
+
+    func dayTapped(gestureRecognizer: UIGestureRecognizer) {
+        NSLog("tapped")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

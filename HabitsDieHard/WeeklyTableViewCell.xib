@@ -117,6 +117,9 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="mondayView" destination="1Gq-En-3Qx" id="rlN-uB-7tT"/>
+            </connections>
             <point key="canvasLocation" x="300.5" y="402.5"/>
         </tableViewCell>
     </objects>
