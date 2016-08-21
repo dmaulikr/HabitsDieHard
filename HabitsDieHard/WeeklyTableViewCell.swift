@@ -32,7 +32,7 @@ class WeeklyTableViewCell: UITableViewCell {
     }
 
     func dayTapped(gestureRecognizer: UIGestureRecognizer) {
-        NSLog("tapped")
+        gestureRecognizer.view?.backgroundColor = UIColor.greenColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
