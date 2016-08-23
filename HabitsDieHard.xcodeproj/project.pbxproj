@@ -15,6 +15,7 @@
 		B3BAB0081D68727D00F20252 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB0071D68727D00F20252 /* Habit.swift */; };
 		B3BAB0111D68B95E00F20252 /* WeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */; };
 		B3BAB0121D68B95E00F20252 /* WeeklyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */; };
+		B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B3BAB0071D68727D00F20252 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyTableViewCell.swift; sourceTree = "<group>"; };
 		B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyTableViewCell.xib; sourceTree = "<group>"; };
+		B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		B3014FF81D675000001D860F /* HabitsDieHard */ = {
 			isa = PBXGroup;
 			children = (
+				B3D426C71D6BC51100C3FAC5 /* 3rdParty */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
 				B3014FFB1D675001001D860F /* ViewController.swift */,
 				B3014FFD1D675001001D860F /* Main.storyboard */,
@@ -71,6 +74,14 @@
 				B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */,
 			);
 			path = HabitsDieHard;
+			sourceTree = "<group>";
+		};
+		B3D426C71D6BC51100C3FAC5 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
+			);
+			name = 3rdParty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				B3BAB0111D68B95E00F20252 /* WeeklyTableViewCell.swift in Sources */,
 				B3BAB0081D68727D00F20252 /* Habit.swift in Sources */,
 				B3014FFC1D675001001D860F /* ViewController.swift in Sources */,
+				B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */,
 				B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

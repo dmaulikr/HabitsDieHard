@@ -19,6 +19,7 @@ class WeeklyTableViewCell: UITableViewCell {
     let borderColor = UIColor.grayColor().CGColor
     let borderWidth: CGFloat = 0.5
     var weekDayViews: [UIView] = []
+    var habitLogsForTargetWeek: [HabitLog] = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,10 +30,47 @@ class WeeklyTableViewCell: UITableViewCell {
             view.layer.borderWidth = borderWidth
             view.layer.borderColor = borderColor
         }
+
+        // this is temporary faked data
+        // todo: Take care of order later
+        habitLogsForTargetWeek = [
+            HabitLog(date: NSDate(dateString: "2016-08-22")),
+            HabitLog(date: NSDate(dateString: "2016-08-23")),
+            HabitLog(date: NSDate(dateString: "2016-08-24")),
+            HabitLog(date: NSDate(dateString: "2016-08-25")),
+            HabitLog(date: NSDate(dateString: "2016-08-26")),
+            HabitLog(date: NSDate(dateString: "2016-08-27")),
+        ]
     }
 
     func dayTapped(gestureRecognizer: UIGestureRecognizer) {
         gestureRecognizer.view?.backgroundColor = UIColor.greenColor()
+        if let view: UIView = gestureRecognizer.view {
+            if let habitLog: HabitLog = viewToHabitLog(view) {
+                habitLog.done = !habitLog.done
+                view.backgroundColor = habitLog.done ? UIColor.greenColor() : UIColor.redColor()
+            }
+        }
+    }
+
+    private func viewToHabitLog(view: UIView) -> HabitLog? {
+        let index = dayIndexFromGestureRecognizer(view)
+        if index == -1 {
+            return nil
+        } else {
+            return habitLogsForTargetWeek[index]
+        }
+    }
+
+
+    private func dayIndexFromGestureRecognizer(view: UIView) -> Int {
+        for i in 0...weekDayViews.count {
+            if weekDayViews[i] == view {
+                return i
+            }
+        }
+        // Never reached
+        return -1
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

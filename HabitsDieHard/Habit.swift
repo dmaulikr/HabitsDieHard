@@ -15,3 +15,11 @@ class Habit {
         self.name = name
     }
 }
+
+class HabitLog {
+    let date: NSDate
+    var done: Bool = false
+    init(date: NSDate) {
+        self.date = date
+    }
+}
