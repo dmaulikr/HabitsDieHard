@@ -40,6 +40,7 @@ class WeeklyTableViewCell: UITableViewCell {
             HabitLog(date: NSDate(dateString: "2016-08-25")),
             HabitLog(date: NSDate(dateString: "2016-08-26")),
             HabitLog(date: NSDate(dateString: "2016-08-27")),
+            HabitLog(date: NSDate(dateString: "2016-08-28")),
         ]
     }
 

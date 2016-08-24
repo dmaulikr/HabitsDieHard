@@ -35,6 +35,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView == weeklyTableView {
+            return NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView
+        } else {
+            return nil
+        }
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tableView == weeklyTableView {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
