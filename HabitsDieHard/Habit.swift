@@ -17,8 +17,13 @@ class Habit {
 }
 
 class HabitLog {
+    enum HabitLogState {
+        case Unassigned
+        case Done
+        case Missed
+    }
     let date: NSDate
-    var done: Bool = false
+    var state: HabitLogState = HabitLogState.Unassigned
     init(date: NSDate) {
         self.date = date
     }

@@ -48,10 +48,33 @@ class WeeklyTableViewCell: UITableViewCell {
         gestureRecognizer.view?.backgroundColor = UIColor.greenColor()
         if let view: UIView = gestureRecognizer.view {
             if let habitLog: HabitLog = viewToHabitLog(view) {
-                habitLog.done = !habitLog.done
-                view.backgroundColor = habitLog.done ? UIColor.greenColor() : UIColor.redColor()
+                switch habitLog.state {
+                case .Done:
+                    habitLog.state = .Missed
+                case .Missed:
+                    habitLog.state = .Unassigned
+                case .Unassigned:
+                    habitLog.state = .Done
+                }
+            }
+            setNeedsLayout()
+        }
+    }
+
+    override func layoutSubviews() {
+        weekDayViews.forEach { (view) in
+            if let habitLog: HabitLog = viewToHabitLog(view) {
+                switch habitLog.state {
+                case .Done:
+                    view.backgroundColor = UIColor.greenColor()
+                case .Missed:
+                    view.backgroundColor = UIColor.redColor()
+                case .Unassigned:
+                    view.backgroundColor = UIColor.whiteColor()
+                }
             }
         }
+
     }
 
     private func viewToHabitLog(view: UIView) -> HabitLog? {
