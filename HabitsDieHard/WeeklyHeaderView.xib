@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awv-dX-oOJ">
-                    <rect key="frame" x="0.0" y="285" width="85.5" height="30"/>
+                    <rect key="frame" x="8" y="285" width="83.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="GDk-qA-f7u"/>
                     </constraints>
@@ -21,7 +22,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msh-ja-iMw">
-                    <rect key="frame" x="85.5" y="285" width="86" height="30"/>
+                    <rect key="frame" x="91.5" y="285" width="83" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Ueb-N5-NDs"/>
                     </constraints>
@@ -30,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybg-iO-82Z">
-                    <rect key="frame" x="171.5" y="285" width="85.5" height="30"/>
+                    <rect key="frame" x="174.5" y="285" width="83.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="0H9-4r-f8f"/>
                     </constraints>
@@ -39,7 +40,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKO-Ye-nOB">
-                    <rect key="frame" x="257" y="285" width="86" height="30"/>
+                    <rect key="frame" x="258" y="285" width="84" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="DbM-ko-m6R"/>
                     </constraints>
@@ -48,7 +49,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTC-V4-Vee">
-                    <rect key="frame" x="343" y="285" width="85.5" height="30"/>
+                    <rect key="frame" x="342" y="285" width="83.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="wnd-fd-XXP"/>
                     </constraints>
@@ -57,7 +58,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ua-3D-T4Z">
-                    <rect key="frame" x="514.5" y="285" width="85.5" height="30"/>
+                    <rect key="frame" x="508.5" y="285" width="83.5" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Ddk-3r-2By"/>
                     </constraints>
@@ -66,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWt-mJ-nGN">
-                    <rect key="frame" x="428.5" y="285" width="86" height="30"/>
+                    <rect key="frame" x="425.5" y="285" width="83" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="v1C-1B-Wxl"/>
                     </constraints>
@@ -76,11 +77,11 @@
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="Awv-dX-oOJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1IV-BU-Q0v"/>
+                <constraint firstItem="Awv-dX-oOJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="1IV-BU-Q0v"/>
                 <constraint firstItem="TTC-V4-Vee" firstAttribute="width" secondItem="Awv-dX-oOJ" secondAttribute="width" id="31j-Ll-rQd"/>
                 <constraint firstItem="2Ua-3D-T4Z" firstAttribute="height" secondItem="Awv-dX-oOJ" secondAttribute="height" id="3PD-M4-L1B"/>
                 <constraint firstItem="2Ua-3D-T4Z" firstAttribute="leading" secondItem="JWt-mJ-nGN" secondAttribute="trailing" id="8bY-tO-Nca"/>
-                <constraint firstAttribute="trailing" secondItem="2Ua-3D-T4Z" secondAttribute="trailing" id="BWW-bM-0ma"/>
+                <constraint firstAttribute="trailingMargin" secondItem="2Ua-3D-T4Z" secondAttribute="trailing" id="BWW-bM-0ma"/>
                 <constraint firstItem="ybg-iO-82Z" firstAttribute="leading" secondItem="Msh-ja-iMw" secondAttribute="trailing" id="EHE-Aj-UxI"/>
                 <constraint firstItem="JWt-mJ-nGN" firstAttribute="width" secondItem="Awv-dX-oOJ" secondAttribute="width" id="EO3-fr-o7E"/>
                 <constraint firstItem="PKO-Ye-nOB" firstAttribute="width" secondItem="Awv-dX-oOJ" secondAttribute="width" id="FN2-eB-sz6"/>
