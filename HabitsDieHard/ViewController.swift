@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var habitTableView: UITableView!
     private let habits = [Habit(name: "Hello"), Habit(name: "World")]
     private let habitCellIdentifier = "habitCell"
+    private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
     private let habitsWeeklyLog: [[HabitLog]] = [
         [
@@ -32,7 +33,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             HabitLog(date: NSDate(dateString: "2016-08-27")),
             HabitLog(date: NSDate(dateString: "2016-08-28"))]]
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         habitTableView.delegate = self
@@ -42,12 +42,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
         weeklyTableView.registerNib(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
+        weeklyTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: weeklyTitleCellIdentifier)
         weeklyTableView.reloadData()
+    }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if tableView == weeklyTableView {
+            return habitsWeeklyLog.count
+        } else {
+            return 1
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == weeklyTableView {
-            return habitsWeeklyLog.count
+            return 2
         } else {
             return habits.count
         }
@@ -55,19 +64,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if tableView == weeklyTableView {
-            return NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView
+            if section == 0 {
+                return NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView
+            } else {
+                return nil
+            }
         } else {
             return nil
         }
     }
 
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 40
+        } else {
+            return 0
+        }
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tableView == weeklyTableView {
-            let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
-            // this is temporary faked data
-            // todo: Take care of order later
-            cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.row]
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(weeklyTitleCellIdentifier, forIndexPath: indexPath)
+                cell.textLabel?.text = "Hello"
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
+                // this is temporary faked data
+                // todo: Take care of order later
+                cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.row]
+                return cell
+            }
         } else {
             var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(habitCellIdentifier)
             if cell == nil {
