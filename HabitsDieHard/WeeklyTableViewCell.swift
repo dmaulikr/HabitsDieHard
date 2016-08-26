@@ -30,18 +30,6 @@ class WeeklyTableViewCell: UITableViewCell {
             view.layer.borderWidth = borderWidth
             view.layer.borderColor = borderColor
         }
-
-        // this is temporary faked data
-        // todo: Take care of order later
-        habitLogsForTargetWeek = [
-            HabitLog(date: NSDate(dateString: "2016-08-22")),
-            HabitLog(date: NSDate(dateString: "2016-08-23")),
-            HabitLog(date: NSDate(dateString: "2016-08-24")),
-            HabitLog(date: NSDate(dateString: "2016-08-25")),
-            HabitLog(date: NSDate(dateString: "2016-08-26")),
-            HabitLog(date: NSDate(dateString: "2016-08-27")),
-            HabitLog(date: NSDate(dateString: "2016-08-28")),
-        ]
     }
 
     func dayTapped(gestureRecognizer: UIGestureRecognizer) {

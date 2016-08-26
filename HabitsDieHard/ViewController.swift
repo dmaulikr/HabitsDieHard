@@ -14,6 +14,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private let habits = [Habit(name: "Hello"), Habit(name: "World")]
     private let habitCellIdentifier = "habitCell"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
+    private let habitsWeeklyLog: [[HabitLog]] = [
+        [
+            HabitLog(date: NSDate(dateString: "2016-08-22")),
+            HabitLog(date: NSDate(dateString: "2016-08-23")),
+            HabitLog(date: NSDate(dateString: "2016-08-24")),
+            HabitLog(date: NSDate(dateString: "2016-08-25")),
+            HabitLog(date: NSDate(dateString: "2016-08-26")),
+            HabitLog(date: NSDate(dateString: "2016-08-27")),
+            HabitLog(date: NSDate(dateString: "2016-08-28"))],
+        [
+            HabitLog(date: NSDate(dateString: "2016-08-22")),
+            HabitLog(date: NSDate(dateString: "2016-08-23")),
+            HabitLog(date: NSDate(dateString: "2016-08-24")),
+            HabitLog(date: NSDate(dateString: "2016-08-25")),
+            HabitLog(date: NSDate(dateString: "2016-08-26")),
+            HabitLog(date: NSDate(dateString: "2016-08-27")),
+            HabitLog(date: NSDate(dateString: "2016-08-28"))]]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == weeklyTableView {
-            return 1
+            return habitsWeeklyLog.count
         } else {
             return habits.count
         }
@@ -46,6 +64,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if tableView == weeklyTableView {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
+            // this is temporary faked data
+            // todo: Take care of order later
+            cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.row]
             return cell
         } else {
             var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(habitCellIdentifier)
