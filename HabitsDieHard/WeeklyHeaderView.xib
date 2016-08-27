@@ -114,6 +114,15 @@
                     <exclude reference="guB-9M-Qyd"/>
                 </mask>
             </variation>
+            <connections>
+                <outlet property="fridayLabel" destination="TTC-V4-Vee" id="6Cu-sU-0lu"/>
+                <outlet property="mondayLabel" destination="Awv-dX-oOJ" id="eAD-rE-L9v"/>
+                <outlet property="saturdayLabel" destination="JWt-mJ-nGN" id="bm5-Z7-fU3"/>
+                <outlet property="sundayLabel" destination="2Ua-3D-T4Z" id="GG8-Ka-LZX"/>
+                <outlet property="thursdayLabel" destination="PKO-Ye-nOB" id="uxn-dC-RaN"/>
+                <outlet property="tuesdayLabel" destination="Msh-ja-iMw" id="ecO-wA-rvL"/>
+                <outlet property="wednesdayLabel" destination="ybg-iO-82Z" id="Rea-mf-ETu"/>
+            </connections>
             <point key="canvasLocation" x="207" y="367"/>
         </view>
     </objects>

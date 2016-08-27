@@ -53,7 +53,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView
+            if let headerView = NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView {
+                let formatter  = NSDateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                let todayDate = formatter.dateFromString("2016-08-25")!
+                let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+                let components = calendar.components(.Weekday, fromDate: todayDate)
+                headerView.dayOfWeek = components.weekday
+                return headerView
+            } else {
+                return nil
+            }
         } else {
             return nil
         }
