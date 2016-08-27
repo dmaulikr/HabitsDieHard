@@ -50,6 +50,7 @@ class WeeklyTableViewCell: UITableViewCell {
     }
 
     override func layoutSubviews() {
+        super.layoutSubviews()
         weekDayViews.forEach { (view) in
             if let habitLog: HabitLog = viewToHabitLog(view) {
                 switch habitLog.state {
