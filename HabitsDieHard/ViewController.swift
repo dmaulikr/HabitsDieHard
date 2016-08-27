@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
-    private let habits = [Habit(name: "Hello"), Habit(name: "World")]
+    private let habits = [Habit(name: "Xcode"), Habit(name: "原稿")]
     private let habitCellIdentifier = "habitCell"
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyTitleCellIdentifier, forIndexPath: indexPath)
-            cell.textLabel?.text = "Hello"
+            cell.textLabel?.text = habits[indexPath.section].name
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
