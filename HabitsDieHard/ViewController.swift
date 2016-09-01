@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private let habitCellIdentifier = "habitCell"
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
+    private let today = NSDate(dateString: "2016-08-31")
     private let habitsWeeklyLog: [[HabitLog]] = [
         [
             HabitLog(date: NSDate(dateString: "2016-08-22")),
@@ -41,6 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
+        NSLog("getMonday=%@", today.getMonday())
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
