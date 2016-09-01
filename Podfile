@@ -7,4 +7,5 @@ target 'HabitsDieHard' do
 
   # Pods for HabitsDieHard
   pod 'Firebase'
+  pod 'Firebase/Database'
 end

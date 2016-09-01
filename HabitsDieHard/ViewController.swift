@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
@@ -33,6 +34,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return HabitLog(date: date)
             }))
         }
+        // testing
+        let ref = FIRDatabase.database().reference()
+        NSLog("%@", ref)
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
