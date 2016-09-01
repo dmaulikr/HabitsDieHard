@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        NSLog("getMonday=%@", today.getMonday())
+        NSLog("getMonday=%@", today.getWholeWeekDates())
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

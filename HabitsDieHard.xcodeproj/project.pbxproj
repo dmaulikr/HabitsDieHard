@@ -66,7 +66,7 @@
 		B3014FF81D675000001D860F /* HabitsDieHard */ = {
 			isa = PBXGroup;
 			children = (
-				B3D426C71D6BC51100C3FAC5 /* 3rdParty */,
+				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
 				B3014FFB1D675001001D860F /* ViewController.swift */,
 				B3014FFD1D675001001D860F /* Main.storyboard */,
@@ -80,14 +80,6 @@
 				B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */,
 			);
 			path = HabitsDieHard;
-			sourceTree = "<group>";
-		};
-		B3D426C71D6BC51100C3FAC5 /* 3rdParty */ = {
-			isa = PBXGroup;
-			children = (
-				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
-			);
-			name = 3rdParty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

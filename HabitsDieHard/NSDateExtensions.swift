@@ -43,4 +43,17 @@ extension NSDate
         let components = gregorianCalendar!.components([.Year, .Month, .Day], fromDate: beginningOfWeek!)
         return gregorianCalendar!.dateFromComponents(components)!
     }
+
+    public func getWholeWeekDates() -> [NSDate] {
+        let monday = getMonday()
+        var weekArray = [monday]
+        let gregorianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)
+        for i in 1...6 {
+            let componentToAdd = NSDateComponents()
+            componentToAdd.day = i
+            let date = gregorianCalendar!.dateByAddingComponents(componentToAdd, toDate: self, options: NSCalendarOptions(rawValue: 0))
+            weekArray.append(date!)
+        }
+        return weekArray
+    }
 }
