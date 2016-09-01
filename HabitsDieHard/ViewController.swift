@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private let habitCellIdentifier = "habitCell"
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
-    private let today = NSDate(dateString: "2016-08-31")
+    private let today = NSDate()
     private var habitsWeeklyLog: [[HabitLog]] = []
 
     override func viewDidLoad() {
