@@ -12,15 +12,18 @@
 		B3014FFF1D675001001D860F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3014FFD1D675001001D860F /* Main.storyboard */; };
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
+		B39628361D784C0F00406806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B39628351D784C0F00406806 /* GoogleService-Info.plist */; };
 		B3BAB0081D68727D00F20252 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB0071D68727D00F20252 /* Habit.swift */; };
 		B3BAB0111D68B95E00F20252 /* WeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */; };
 		B3BAB0121D68B95E00F20252 /* WeeklyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */; };
 		B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */; };
 		B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */; };
 		B3D426CF1D6D07D300C3FAC5 /* WeeklyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */; };
+		D7C4461EBD0E80B51B119CC4 /* Pods_HabitsDieHard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4CEE65341ECF71352690BB3 /* Pods-HabitsDieHard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitsDieHard.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard.release.xcconfig"; sourceTree = "<group>"; };
 		B3014FF61D675000001D860F /* HabitsDieHard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitsDieHard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3014FF91D675000001D860F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3014FFB1D675001001D860F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,12 +31,15 @@
 		B30150001D675001001D860F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B39628351D784C0F00406806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3BAB0071D68727D00F20252 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyTableViewCell.swift; sourceTree = "<group>"; };
 		B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyTableViewCell.xib; sourceTree = "<group>"; };
 		B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyHeaderView.swift; sourceTree = "<group>"; };
 		B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHeaderView.xib; sourceTree = "<group>"; };
+		B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitsDieHard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitsDieHard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C4461EBD0E80B51B119CC4 /* Pods_HabitsDieHard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F248B331CFB77D36FCCE681 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */,
+				A4CEE65341ECF71352690BB3 /* Pods-HabitsDieHard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		0FE9436B7CD2DAA716884A10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3014FED1D675000001D860F = {
 			isa = PBXGroup;
 			children = (
+				B39628351D784C0F00406806 /* GoogleService-Info.plist */,
 				B3014FF81D675000001D860F /* HabitsDieHard */,
 				B3014FF71D675000001D860F /* Products */,
+				0F248B331CFB77D36FCCE681 /* Pods */,
+				0FE9436B7CD2DAA716884A10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B30150081D675001001D860F /* Build configuration list for PBXNativeTarget "HabitsDieHard" */;
 			buildPhases = (
+				27FBB8F7A91900458FE9D474 /* [CP] Check Pods Manifest.lock */,
 				B3014FF21D675000001D860F /* Sources */,
 				B3014FF31D675000001D860F /* Frameworks */,
 				B3014FF41D675000001D860F /* Resources */,
+				7A9656C0561DFB2B75F84931 /* [CP] Embed Pods Frameworks */,
+				AF4FD48524EAB995CFCCD728 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,10 +175,59 @@
 				B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */,
 				B30150011D675001001D860F /* Assets.xcassets in Resources */,
 				B3014FFF1D675001001D860F /* Main.storyboard in Resources */,
+				B39628361D784C0F00406806 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27FBB8F7A91900458FE9D474 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7A9656C0561DFB2B75F84931 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF4FD48524EAB995CFCCD728 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B3014FF21D675000001D860F /* Sources */ = {
@@ -271,6 +350,7 @@
 		};
 		B30150091D675001001D860F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
@@ -282,6 +362,7 @@
 		};
 		B301500A1D675001001D860F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4CEE65341ECF71352690BB3 /* Pods-HabitsDieHard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
