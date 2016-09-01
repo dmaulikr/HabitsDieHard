@@ -27,15 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-
-        for _ in 0...1 {
+        for _ in 0...habits.count - 1 {
             habitsWeeklyLog.append(
             today.getWholeWeekDates().map({ (date) -> HabitLog in
                 return HabitLog(date: date)
             }))
         }
-        NSLog("getMonday=%@", today.getWholeWeekDates())
-
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,9 +46,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             if let headerView = NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView {
-//                let formatter  = NSDateFormatter()
-//                formatter.dateFormat = "yyyy-MM-dd"
-//                let todayDate = formatter.dateFromString("2016-08-25")!
                 let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
                 let components = calendar.components(.Weekday, fromDate: today)
                 headerView.dayOfWeek = components.weekday
