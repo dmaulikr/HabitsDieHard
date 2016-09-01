@@ -30,7 +30,7 @@ class WeeklyHeaderView: UIView {
                 labels.append(saturdayLabel)
                 labels.append(sundayLabel)
             }
-            labels[dayOfWeek].textColor = UIColor.orangeColor()
+            labels[dayOfWeek - 1].textColor = UIColor.orangeColor()
         }
     }
 

@@ -15,23 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
     private let today = NSDate(dateString: "2016-08-31")
-    private let habitsWeeklyLog: [[HabitLog]] = [
-        [
-            HabitLog(date: NSDate(dateString: "2016-08-22")),
-            HabitLog(date: NSDate(dateString: "2016-08-23")),
-            HabitLog(date: NSDate(dateString: "2016-08-24")),
-            HabitLog(date: NSDate(dateString: "2016-08-25")),
-            HabitLog(date: NSDate(dateString: "2016-08-26")),
-            HabitLog(date: NSDate(dateString: "2016-08-27")),
-            HabitLog(date: NSDate(dateString: "2016-08-28"))],
-        [
-            HabitLog(date: NSDate(dateString: "2016-08-22")),
-            HabitLog(date: NSDate(dateString: "2016-08-23")),
-            HabitLog(date: NSDate(dateString: "2016-08-24")),
-            HabitLog(date: NSDate(dateString: "2016-08-25")),
-            HabitLog(date: NSDate(dateString: "2016-08-26")),
-            HabitLog(date: NSDate(dateString: "2016-08-27")),
-            HabitLog(date: NSDate(dateString: "2016-08-28"))]]
+    private var habitsWeeklyLog: [[HabitLog]] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +27,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
+
+        for _ in 0...1 {
+            habitsWeeklyLog.append(
+            today.getWholeWeekDates().map({ (date) -> HabitLog in
+                return HabitLog(date: date)
+            }))
+        }
         NSLog("getMonday=%@", today.getWholeWeekDates())
+
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -57,11 +49,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             if let headerView = NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView {
-                let formatter  = NSDateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                let todayDate = formatter.dateFromString("2016-08-25")!
+//                let formatter  = NSDateFormatter()
+//                formatter.dateFormat = "yyyy-MM-dd"
+//                let todayDate = formatter.dateFromString("2016-08-25")!
                 let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-                let components = calendar.components(.Weekday, fromDate: todayDate)
+                let components = calendar.components(.Weekday, fromDate: today)
                 headerView.dayOfWeek = components.weekday
                 return headerView
             } else {

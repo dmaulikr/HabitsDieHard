@@ -20,7 +20,7 @@ extension NSDate
     }
 
     // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/DatesAndTimes/Articles/dtCalendricalCalculations.html#//apple_ref/doc/uid/TP40007836-SW12
-    public func getMonday() -> NSDate {
+    public func getSunday() -> NSDate {
         let gregorianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)
 
         // Get the weekday component of the current date
@@ -31,7 +31,7 @@ extension NSDate
          The weekday value for Sunday in the Gregorian calendar is 1, so subtract 1 from the number of days to subtract from the date in question.  (If today is Sunday, subtract 0 days.)
          */
         let componentsToSubtract = NSDateComponents()
-        componentsToSubtract.day = 0 - (weekdayComponents.weekday - 2);
+        componentsToSubtract.day = 0 - (weekdayComponents.weekday - 1);
 
         let beginningOfWeek = gregorianCalendar!.dateByAddingComponents(componentsToSubtract, toDate:self, options:NSCalendarOptions(rawValue: 0))
 
@@ -45,13 +45,13 @@ extension NSDate
     }
 
     public func getWholeWeekDates() -> [NSDate] {
-        let monday = getMonday()
-        var weekArray = [monday]
+        let sunday = getSunday()
+        var weekArray = [sunday]
         let gregorianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)
         for i in 1...6 {
             let componentToAdd = NSDateComponents()
             componentToAdd.day = i
-            let date = gregorianCalendar!.dateByAddingComponents(componentToAdd, toDate: self, options: NSCalendarOptions(rawValue: 0))
+            let date = gregorianCalendar!.dateByAddingComponents(componentToAdd, toDate: sunday, options: NSCalendarOptions(rawValue: 0))
             weekArray.append(date!)
         }
         return weekArray
