@@ -73,8 +73,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
-            // this is temporary faked data
-            // todo: Take care of order later
             cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.row]
             return cell
         }
