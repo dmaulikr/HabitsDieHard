@@ -10,13 +10,17 @@ import Foundation
 import Firebase
 
 class HabitLog {
-    enum HabitLogState {
-        case Unassigned
-        case Done
-        case Missed
+    enum HabitLogState: String {
+        case Unassigned = "Unassigned"
+        case Done = "Done"
+        case Missed = "Missed"
     }
     let date: NSDate
-    var state: HabitLogState = HabitLogState.Unassigned
+    var state: HabitLogState = HabitLogState.Unassigned {
+        didSet {
+            save()
+        }
+    }
     init(date: NSDate) {
         self.date = date
     }
@@ -24,12 +28,8 @@ class HabitLog {
     // todo: temporary. should replace with auth
     let userID = "1234"
 
-    // todo
-    // temporary user
-    // normalize date
-    // save enum value
     func save() {
         let ref = FIRDatabase.database().reference()
-        ref.child("habit-logs/\(userID)/\(self.date.simpleDateKey())").setValue("done")
+        ref.child("habit-logs/\(userID)/\(self.date.simpleDateKey())").setValue(state.rawValue)
     }
 }
