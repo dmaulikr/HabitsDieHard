@@ -36,6 +36,7 @@ class WeeklyTableViewCell: UITableViewCell {
         gestureRecognizer.view?.backgroundColor = UIColor.greenColor()
         if let view: UIView = gestureRecognizer.view {
             if let habitLog: HabitLog = viewToHabitLog(view) {
+                habitLog.save()
                 switch habitLog.state {
                 case .Done:
                     habitLog.state = .Missed

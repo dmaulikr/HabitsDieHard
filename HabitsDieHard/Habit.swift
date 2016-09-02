@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Habit {
     let name: String
@@ -16,15 +17,3 @@ class Habit {
     }
 }
 
-class HabitLog {
-    enum HabitLogState {
-        case Unassigned
-        case Done
-        case Missed
-    }
-    let date: NSDate
-    var state: HabitLogState = HabitLogState.Unassigned
-    init(date: NSDate) {
-        self.date = date
-    }
-}
