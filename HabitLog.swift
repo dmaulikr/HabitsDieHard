@@ -21,12 +21,15 @@ class HabitLog {
         self.date = date
     }
 
+    // todo: temporary. should replace with auth
+    let userID = "1234"
+
     // todo
     // temporary user
     // normalize date
     // save enum value
     func save() {
         let ref = FIRDatabase.database().reference()
-        ref.child("habit-logs/1234/\(self.date)").setValue("done")
+        ref.child("habit-logs/\(userID)/\(self.date.simpleDateKey())").setValue("done")
     }
 }

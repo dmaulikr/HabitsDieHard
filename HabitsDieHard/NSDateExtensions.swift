@@ -56,4 +56,10 @@ extension NSDate
         }
         return weekArray
     }
+
+    public func simpleDateKey() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-M-dd"
+        return dateFormatter.stringFromDate(self)
+    }
 }
