@@ -36,6 +36,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         // testing
         let ref = FIRDatabase.database().reference()
+        ref.child("habit-logs").child("1234").child("2016-8-31").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            print(snapshot)
+            let habitLog = HabitLog(snapshot: snapshot)
+            print(habitLog)
+
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         NSLog("%@", ref)
     }
 

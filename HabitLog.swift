@@ -21,8 +21,18 @@ class HabitLog {
             save()
         }
     }
-    init(date: NSDate) {
+
+    init(date: NSDate, state: HabitLogState) {
         self.date = date
+    }
+
+    convenience init(date: NSDate) {
+        self.init(date: date, state: .Unassigned)
+    }
+
+    convenience init(snapshot: FIRDataSnapshot) {
+//        snapshot.key
+        self.init(date: NSDate(), state: .Unassigned)
     }
 
     // todo: temporary. should replace with auth
