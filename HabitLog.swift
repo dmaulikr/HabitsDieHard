@@ -31,8 +31,12 @@ class HabitLog {
     }
 
     convenience init(snapshot: FIRDataSnapshot) {
-//        snapshot.key
-        self.init(date: NSDate(), state: .Unassigned)
+        let dateString = snapshot.key
+        if let statusString = snapshot.value as? String, habitLogState = HabitLogState(rawValue: statusString) {
+            self.init(date: NSDate(dateString: dateString), state: habitLogState)
+        } else {
+            self.init(date: NSDate(dateString: dateString), state: .Unassigned)
+        }
     }
 
     // todo: temporary. should replace with auth

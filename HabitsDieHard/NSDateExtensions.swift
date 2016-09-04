@@ -59,7 +59,7 @@ extension NSDate
 
     public func simpleDateKey() -> String {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-M-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.stringFromDate(self)
     }
 }
