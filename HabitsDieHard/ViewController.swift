@@ -11,9 +11,13 @@ import Firebase
 
 // todo user id as key
 class HabitLogRepository {
-    class func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+    let userID: String
+    init(userID: String) {
+        self.userID = userID
+    }
+    func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habit-logs").child("1234")
+        let myHabitLogsRef = ref.child("habit-logs").child(self.userID)
         let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []
@@ -58,7 +62,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // todo repository
         // empty range
 
-        HabitLogRepository.habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-05")) { (habitLogs, error) in
+        HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-05")) { (habitLogs, error) in
             if error == nil {
                 NSLog("repo=%@", habitLogs)
             } else {
