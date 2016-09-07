@@ -18,7 +18,7 @@ class HabitLogRepository {
 
     func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habit-logs").child(self.userID)
+        let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID)
         let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []

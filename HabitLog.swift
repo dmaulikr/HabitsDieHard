@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class HabitLog {
+    static let rootKey = "habit-logs"
     enum HabitLogState: String {
         case Unassigned = "Unassigned"
         case Done = "Done"
@@ -52,6 +53,6 @@ class HabitLog {
 
     func save() {
         let ref = FIRDatabase.database().reference()
-        ref.child("habit-logs/\(userID)/\(self.date.simpleDateKey())").setValue(state.rawValue)
+        ref.child("\(HabitLog.rootKey)/\(userID)/\(self.date.simpleDateKey())").setValue(state.rawValue)
     }
 }
