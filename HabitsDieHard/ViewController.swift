@@ -9,30 +9,6 @@
 import UIKit
 import Firebase
 
-// todo user id as key
-class HabitLogRepository {
-    let userID: String
-    init(userID: String) {
-        self.userID = userID
-    }
-    func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
-        let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habit-logs").child(self.userID)
-        let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
-        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            var habitLogs: [HabitLog] = []
-            if let habitLogsDic = snapshot.value as? [String: String] {
-                habitLogsDic.forEach({ (dateString, stateString) in
-                    habitLogs.append(HabitLog(dateString: dateString, stateString: stateString))
-                })
-                complition(habitLogs, nil)
-            } else {
-                complition([], NSError(domain: "todo", code: -1, userInfo: nil))
-            }
-        })
-    }
-}
-
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
     private let habits = [Habit(name: "Xcode"), Habit(name: "原稿")]
@@ -58,11 +34,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return HabitLog(date: date)
             }))
         }
-        // testing
-        // move repository to new file
+
+
         // fill gap
         // adjust date
-
         HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-05")) { (habitLogs, error) in
             if error == nil {
                 NSLog("repo=%@", habitLogs)
