@@ -11,7 +11,7 @@ import Foundation
 extension NSDate
 {
     // From http://stackoverflow.com/questions/24089999/how-do-you-create-a-swift-date-object
-    convenience init(dateString:String) {
+    convenience init(dateString: String) {
         let dateStringFormatter = NSDateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
         dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
