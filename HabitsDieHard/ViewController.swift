@@ -59,8 +59,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }))
         }
         // testing
-        // todo repository
-        // empty range
+        // move repository to new file
+        // fill gap
+        // adjust date
 
         HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-05")) { (habitLogs, error) in
             if error == nil {
@@ -69,30 +70,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 // todo
             }
         }
-
-/*
-        let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habit-logs").child("1234")
-        let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue("2016-09-04").queryEndingAtValue("2016-09-05")
-
-        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            print(snapshot)
-            var habitLogs: [HabitLog] = []
-            if let habitLogsDic = snapshot.value as? [String: String] {
-                habitLogsDic.forEach({ (dateString, stateString) in
-                    habitLogs.append(HabitLog(dateString: dateString, stateString: stateString))
-                })
-            }
-
-            // todo: remove
-            let habitLog = HabitLog(snapshot: snapshot)
-            print(habitLog)
-
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        NSLog("%@", ref)
-*/
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
