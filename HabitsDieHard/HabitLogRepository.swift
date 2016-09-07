@@ -10,6 +10,10 @@ import Foundation
 import Firebase
 
 class HabitLogRepository {
+
+    // todo constant keys
+    // check order
+    // tidy
     let userID: String
 
     init(userID: String) {
@@ -19,12 +23,12 @@ class HabitLogRepository {
     func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID)
-        let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
+        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey(), childKey: "date").queryEndingAtValue(endDate.simpleDateKey(), childKey: "date")
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []
-            if let habitLogsDic = snapshot.value as? [String: String] {
-                habitLogsDic.forEach({ (dateString, stateString) in
-                    habitLogs.append(HabitLog(userID: self.userID, dateString: dateString, stateString: stateString))
+            if let habitLogsDic = snapshot.value as? [String: [String: String]] {
+                habitLogsDic.forEach({ (key, valueDic) in
+                    habitLogs.append(HabitLog(key: key, userID: self.userID, dateString: valueDic["date"]!, stateString: valueDic["state"]!))
                 })
                 complition(habitLogs, nil)
             } else {

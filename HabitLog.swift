@@ -18,27 +18,29 @@ class HabitLog: CustomStringConvertible {
     }
     let userID: String
     let date: NSDate
+    var key: String?
     var state: HabitLogState = HabitLogState.Unassigned {
         didSet {
             save()
         }
     }
 
-    init(userID: String, date: NSDate, state: HabitLogState) {
+    init(key: String?, userID: String, date: NSDate, state: HabitLogState) {
+        self.key = key
         self.userID = userID
         self.state = state
         self.date = date
     }
 
     convenience init(userID: String, date: NSDate) {
-        self.init(userID: userID, date: date, state: .Unassigned)
+        self.init(key: nil, userID: userID, date: date, state: .Unassigned)
     }
 
-    convenience init(userID: String, dateString: String, stateString: String) {
+    convenience init(key: String, userID: String, dateString: String, stateString: String) {
         if let habitLogState = HabitLogState(rawValue: stateString) {
-            self.init(userID: userID, date: NSDate(dateString: dateString), state: habitLogState)
+            self.init(key: key, userID: userID, date: NSDate(dateString: dateString), state: habitLogState)
         } else {
-            self.init(userID: userID, date: NSDate(dateString: dateString), state: .Unassigned)
+            self.init(key: key, userID: userID, date: NSDate(dateString: dateString), state: .Unassigned)
         }
     }
 
@@ -59,6 +61,8 @@ class HabitLog: CustomStringConvertible {
 
     func save() {
         let ref = FIRDatabase.database().reference()
-        ref.child("\(HabitLog.rootKey)/\(userID)/\(self.date.simpleDateKey())").setValue(state.rawValue)
+        let key = self.key == nil ? ref.child(HabitLog.rootKey).child("userID").childByAutoId().key : self.key
+        let value = [ "date": self.date.simpleDateKey(), "state": state.rawValue]
+        ref.child("\(HabitLog.rootKey)/\(userID)/\(key)").setValue(value)
     }
 }
