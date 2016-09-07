@@ -35,10 +35,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }))
         }
         // testing
+        // todo repository
 
         let ref = FIRDatabase.database().reference()
-        ref.child("habit-logs").child("1234").child("2016-09-04").observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        let myHabitLogsRef = ref.child("habit-logs").child("1234")
+        let query = myHabitLogsRef.queryOrderedByKey().queryStartingAtValue("2016-09-04").queryEndingAtValue("2016-09-05")
+
+        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             print(snapshot)
+            var habitLogs: [HabitLog] = []
+            if let habitLogsDic = snapshot.value as? [String: String] {
+                habitLogsDic.forEach({ (dateString, stateString) in
+                    habitLogs.append(HabitLog(dateString: dateString, stateString: stateString))
+                })
+            }
+
+            // todo: remove
             let habitLog = HabitLog(snapshot: snapshot)
             print(habitLog)
 

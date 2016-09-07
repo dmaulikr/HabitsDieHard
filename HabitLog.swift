@@ -30,6 +30,14 @@ class HabitLog {
         self.init(date: date, state: .Unassigned)
     }
 
+    convenience init(dateString: String, stateString: String) {
+        if let habitLogState = HabitLogState(rawValue: stateString) {
+            self.init(date: NSDate(dateString: dateString), state: habitLogState)
+        } else {
+            self.init(date: NSDate(dateString: dateString), state: .Unassigned)
+        }
+    }
+
     convenience init(snapshot: FIRDataSnapshot) {
         let dateString = snapshot.key
         if let statusString = snapshot.value as? String, habitLogState = HabitLogState(rawValue: statusString) {
