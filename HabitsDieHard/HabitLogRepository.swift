@@ -24,7 +24,7 @@ class HabitLogRepository {
             var habitLogs: [HabitLog] = []
             if let habitLogsDic = snapshot.value as? [String: String] {
                 habitLogsDic.forEach({ (dateString, stateString) in
-                    habitLogs.append(HabitLog(dateString: dateString, stateString: stateString))
+                    habitLogs.append(HabitLog(userID: self.userID, dateString: dateString, stateString: stateString))
                 })
                 complition(habitLogs, nil)
             } else {

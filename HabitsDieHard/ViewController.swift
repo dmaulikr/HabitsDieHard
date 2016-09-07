@@ -31,16 +31,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         for _ in 0...habits.count - 1 {
             habitsWeeklyLog.append(
             today.getWholeWeekDates().map({ (date) -> HabitLog in
-                return HabitLog(date: date)
+                return HabitLog(userID: "1234", date: date)
             }))
         }
 
 
         // fill gap
         // adjust date
-        HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-05")) { (habitLogs, error) in
+        HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-05"), endDate: NSDate(dateString: "2016-09-11")) { (habitLogs, error) in
             if error == nil {
-                NSLog("repo=%@", habitLogs)
+                print("repo=\(habitLogs)")
             } else {
                 // todo
             }
