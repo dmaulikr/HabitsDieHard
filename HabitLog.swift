@@ -61,7 +61,7 @@ class HabitLog: CustomStringConvertible {
 
     func save() {
         let ref = FIRDatabase.database().reference()
-        let key = self.key == nil ? ref.child(HabitLog.rootKey).child("userID").childByAutoId().key : self.key
+        let key = self.key == nil ? ref.child(HabitLog.rootKey).child("userID").childByAutoId().key : self.key!
         let value = [ "date": self.date.simpleDateKey(), "state": state.rawValue]
         ref.child("\(HabitLog.rootKey)/\(userID)/\(key)").setValue(value)
     }

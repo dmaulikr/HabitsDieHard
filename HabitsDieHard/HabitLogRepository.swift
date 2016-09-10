@@ -23,17 +23,17 @@ class HabitLogRepository {
     func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID)
-        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey(), childKey: "date").queryEndingAtValue(endDate.simpleDateKey(), childKey: "date")
+        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []
-            if let habitLogsDic = snapshot.value as? [String: [String: String]] {
-                habitLogsDic.forEach({ (key, valueDic) in
-                    habitLogs.append(HabitLog(key: key, userID: self.userID, dateString: valueDic["date"]!, stateString: valueDic["state"]!))
-                })
-                complition(habitLogs, nil)
-            } else {
-                complition([], NSError(domain: "todo", code: -1, userInfo: nil))
+
+            // we are using children enumerator to keep order
+            for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
+                if let habitLogDic = habitLogSnapshot.value as? [String: String] {
+                    habitLogs.append(HabitLog(key: habitLogSnapshot.key, userID: self.userID, dateString: habitLogDic["date"]!, stateString: habitLogDic["state"]!))
+                }
             }
+            complition(habitLogs, nil)
         })
     }
 }

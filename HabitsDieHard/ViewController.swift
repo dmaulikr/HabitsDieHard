@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         // fill gap
         // adjust date
-        HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-05"), endDate: NSDate(dateString: "2016-09-11")) { (habitLogs, error) in
+        HabitLogRepository(userID: "1234").habitLogsWithStartDate( NSDate(dateString: "2016-09-04"), endDate: NSDate(dateString: "2016-09-11")) { (habitLogs, error) in
             if error == nil {
                 print("repo=\(habitLogs)")
             } else {
