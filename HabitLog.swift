@@ -46,23 +46,12 @@ class HabitLog: CustomStringConvertible {
 
     var description: String { return "userID:\(userID) date:\(date.simpleDateKey()) state:\(state.rawValue)" }
 
-
-//    convenience init(snapshot: FIRDataSnapshot) {
-//        let dateString = snapshot.key
-//        if let statusString = snapshot.value as? String, habitLogState = HabitLogState(rawValue: statusString) {
-//            self.init(userID: userID, date: NSDate(dateString: dateString), state: habitLogState)
-//        } else {
-//            self.init(userID: userID, date: NSDate(dateString: dateString), state: .Unassigned)
-//        }
-//    }
-//
-//    // todo: temporary. should replace with auth
-//    let userID = "1234"
-
     func save() {
         let ref = FIRDatabase.database().reference()
-        let key = self.key == nil ? ref.child(HabitLog.rootKey).child("userID").childByAutoId().key : self.key!
+        if self.key == nil {
+            self.key = ref.child(HabitLog.rootKey).child("userID").childByAutoId().key
+        }
         let value = [ "date": self.date.simpleDateKey(), "state": state.rawValue]
-        ref.child("\(HabitLog.rootKey)/\(userID)/\(key)").setValue(value)
+        ref.child("\(HabitLog.rootKey)/\(userID)/\(self.key)").setValue(value)
     }
 }
