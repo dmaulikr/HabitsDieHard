@@ -27,18 +27,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-/*
-        for _ in 0...habits.count - 1 {
-            habitsWeeklyLog.append(
-            today.getWholeWeekDates().map({ (date) -> HabitLog in
-                return HabitLog(userID: "1234", date: date)
-            }))
-        }
-*/
 
-        // fill gap
-        // adjust date
         // offline
+        // auth
         let startDate = today.getSunday()
         let endDate = startDate.dateByAdding(6)
         HabitLogRepository(userID: "1234").getFilledRangeWithStartDate(startDate, endDate: endDate) { (habitLogs, error) in
