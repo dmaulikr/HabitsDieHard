@@ -62,4 +62,14 @@ extension NSDate
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.stringFromDate(self)
     }
+
+    public func dateByAdding(delta: Int) -> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        return calendar.dateByAddingUnit(
+            .Day,
+            value: delta,
+            toDate: self,
+            options: []
+        )!
+    }
 }

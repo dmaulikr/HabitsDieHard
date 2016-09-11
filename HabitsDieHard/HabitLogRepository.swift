@@ -20,7 +20,7 @@ class HabitLogRepository {
         self.userID = userID
     }
 
-    func habitLogsWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+    func getWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID)
         let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
@@ -35,5 +35,25 @@ class HabitLogRepository {
             }
             complition(habitLogs, nil)
         })
+    }
+
+    func getFilledRangeWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+        getWithStartDate(startDate, endDate: endDate) { (habitLogs, error) in
+            var ret: [HabitLog] = []
+            var index = 0
+            var targetDate = startDate
+            while targetDate.compare(endDate) != NSComparisonResult.OrderedDescending {
+                if index >= habitLogs.count {
+                    ret.append(HabitLog(userID: self.userID, date: targetDate))
+                } else if habitLogs[index].date.simpleDateKey() == targetDate.simpleDateKey() {
+                    ret.append(habitLogs[index])
+                    index += 1
+                } else {
+                    ret.append(HabitLog(userID: self.userID, date: targetDate))
+                }
+                targetDate = targetDate.dateByAdding(1)
+            }
+            complition(ret, nil)
+        }
     }
 }
