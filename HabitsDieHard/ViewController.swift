@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
-        // offline
+        // habit types
         // auth
         let startDate = today.getSunday()
         let endDate = startDate.dateByAdding(6)
