@@ -10,9 +10,11 @@ import Foundation
 import Firebase
 
 class Habit: CustomStringConvertible {
+    let key: String
     let name: String
-    var done: Bool = false
-    init(name: String) {
+    
+    init(key: String, name: String) {
+        self.key = key
         self.name = name
     }
 

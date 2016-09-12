@@ -11,7 +11,7 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
-    private let habits = [Habit(name: "Xcode"), Habit(name: "原稿")]
+    private let habits = [Habit(key: "hoge", name: "Xcode"), Habit(key: "hige", name: "原稿")]
     private let habitCellIdentifier = "habitCell"
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
@@ -38,6 +38,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         // userid
         // repository
+        // remove done var
+        // save
+        // key
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child("habits").child("1234")
         let query = myHabitLogsRef.queryOrderedByChild("name")
@@ -45,7 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var habits: [Habit] = []
             for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
                 if let habitLogDic = habitLogSnapshot.value as? [String: String] {
-                    habits.append(Habit(name: habitLogDic["name"]!))
+                    habits.append(Habit(key: habitLogSnapshot.key, name: habitLogDic["name"]!))
                 }
             }
             print(habits)
@@ -56,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // auth
         let startDate = today.getSunday()
         let endDate = startDate.dateByAdding(6)
-        HabitLogRepository(userID: "1234").getFilledRangeWithStartDate(startDate, endDate: endDate) { (habitLogs, error) in
+        HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habits[0], startDate: startDate, endDate: endDate) { (habitLogs, error) in
             if error == nil {
                 // Ah todo
                 self.habitsWeeklyLog = [habitLogs, habitLogs]

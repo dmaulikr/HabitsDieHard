@@ -20,9 +20,9 @@ class HabitLogRepository {
         self.userID = userID
     }
 
-    func getWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+    func getRangeWithHabit(habit: Habit, startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID)
+        let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID).child(habit.key)
         let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []
@@ -30,15 +30,15 @@ class HabitLogRepository {
             // we are using children enumerator to keep order
             for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
                 if let habitLogDic = habitLogSnapshot.value as? [String: String] {
-                    habitLogs.append(HabitLog(key: habitLogSnapshot.key, userID: self.userID, dateString: habitLogDic["date"]!, stateString: habitLogDic["state"]!))
+                    habitLogs.append(HabitLog(key: habitLogSnapshot.key, habitKey: habit.key, userID: self.userID, dateString: habitLogDic["date"]!, stateString: habitLogDic["state"]!))
                 }
             }
             complition(habitLogs, nil)
         })
     }
 
-    func getFilledRangeWithStartDate(startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
-        getWithStartDate(startDate, endDate: endDate) { (habitLogs, error) in
+    func getFilledRangeWithHabit(habit: Habit, startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+        getRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
             var ret: [HabitLog] = []
             var index = 0
             var targetDate = startDate
