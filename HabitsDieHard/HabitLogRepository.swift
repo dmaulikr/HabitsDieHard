@@ -44,12 +44,12 @@ class HabitLogRepository {
             var targetDate = startDate
             while targetDate.compare(endDate) != NSComparisonResult.OrderedDescending {
                 if index >= habitLogs.count {
-                    ret.append(HabitLog(userID: self.userID, date: targetDate))
+                    ret.append(HabitLog(habitKey: habit.key, userID: self.userID, date: targetDate))
                 } else if habitLogs[index].date.simpleDateKey() == targetDate.simpleDateKey() {
                     ret.append(habitLogs[index])
                     index += 1
                 } else {
-                    ret.append(HabitLog(userID: self.userID, date: targetDate))
+                    ret.append(HabitLog(habitKey: habit.key, userID: self.userID, date: targetDate))
                 }
                 targetDate = targetDate.dateByAdding(1)
             }

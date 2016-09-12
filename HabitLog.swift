@@ -35,8 +35,8 @@ class HabitLog: CustomStringConvertible {
     }
 
     // todo remove
-    convenience init(userID: String, date: NSDate) {
-        self.init(key: nil, habitKey: "kkk", userID: userID, date: date, state: .Unassigned)
+    convenience init(habitKey: String, userID: String, date: NSDate) {
+        self.init(key: nil, habitKey: habitKey, userID: userID, date: date, state: .Unassigned)
     }
 
     convenience init(key: String, habitKey: String, userID: String, dateString: String, stateString: String) {

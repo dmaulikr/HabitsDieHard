@@ -11,7 +11,7 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
-    private let habits = [Habit(key: "hoge", name: "Xcode"), Habit(key: "hige", name: "原稿")]
+    private var habits: [Habit] = []
     private let habitCellIdentifier = "habitCell"
     private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
@@ -51,24 +51,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     habits.append(Habit(key: habitLogSnapshot.key, name: habitLogDic["name"]!))
                 }
             }
-            print(habits)
+            // habit types
+            // auth
+            self.habits = habits
+            let startDate = self.today.getSunday()
+            let endDate = startDate.dateByAdding(6)
+            HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habits[0], startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                if error == nil {
+                    // Ah todo
+                    self.habitsWeeklyLog = [habitLogs, habitLogs]
+                    print("repo=\(habitLogs)")
+                    self.weeklyTableView.reloadData()
+                } else {
+                    // todo
+                }
+            }
         })
 
 
-        // habit types
-        // auth
-        let startDate = today.getSunday()
-        let endDate = startDate.dateByAdding(6)
-        HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habits[0], startDate: startDate, endDate: endDate) { (habitLogs, error) in
-            if error == nil {
-                // Ah todo
-                self.habitsWeeklyLog = [habitLogs, habitLogs]
-                print("repo=\(habitLogs)")
-                self.weeklyTableView.reloadData()
-            } else {
-                // todo
-            }
-        }
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 2;
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
