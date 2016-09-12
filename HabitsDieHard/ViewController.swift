@@ -28,6 +28,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
 
+/*
+        let ref = FIRDatabase.database().reference()
+        let myHabitLogsRef = ref.child("habits").child("1234")
+        let key = myHabitLogsRef.childByAutoId().key
+        let value = [ "created_at": NSDate().simpleDateKey(), "name": "Jogging"]
+        myHabitLogsRef.child(key).setValue(value)
+*/
+
+        // userid
+        // repository
+        let ref = FIRDatabase.database().reference()
+        let myHabitLogsRef = ref.child("habits").child("1234")
+        let query = myHabitLogsRef.queryOrderedByChild("name")
+        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            var habits: [Habit] = []
+            for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
+                if let habitLogDic = habitLogSnapshot.value as? [String: String] {
+                    habits.append(Habit(name: habitLogDic["name"]!))
+                }
+            }
+            print(habits)
+        })
+
+
         // habit types
         // auth
         let startDate = today.getSunday()

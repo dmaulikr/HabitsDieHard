@@ -9,11 +9,13 @@
 import Foundation
 import Firebase
 
-class Habit {
+class Habit: CustomStringConvertible {
     let name: String
     var done: Bool = false
     init(name: String) {
         self.name = name
     }
+
+    var description: String { return "Habit {name:\(name)}" }
 }
 
