@@ -56,14 +56,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.habits = habits
             let startDate = self.today.getSunday()
             let endDate = startDate.dateByAdding(6)
-            HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habits[0], startDate: startDate, endDate: endDate) { (habitLogs, error) in
-                if error == nil {
-                    // Ah todo
-                    self.habitsWeeklyLog = [habitLogs, habitLogs]
-                    print("repo=\(habitLogs)")
-                    self.weeklyTableView.reloadData()
-                } else {
-                    // todo
+            for habit in habits {
+                HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                    if error == nil {
+                        // Ah todo
+                        self.habitsWeeklyLog.append(habitLogs)
+
+                        print("repo=\(habitLogs)")
+                        self.weeklyTableView.reloadData()
+                    } else {
+                        // todo
+                    }
                 }
             }
         })
@@ -76,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2;
+        return habitsWeeklyLog.count;
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -109,7 +112,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
-            cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.row]
+            cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.section]
             return cell
         }
     }

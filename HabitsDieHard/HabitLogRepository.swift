@@ -23,7 +23,15 @@ class HabitLogRepository {
     func getRangeWithHabit(habit: Habit, startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID).child(habit.key)
-        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
+
+        // don't use "2016-09-16" format, - would be recognized as minus.
+        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()/*, childKey: "date"*/).queryEndingAtValue(endDate.simpleDateKey()/*, childKey: "date"*/)
+//        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(20160911).queryEndingAtValue(20160917)
+
+//        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue("2016/09/12"/*, childKey: "date"*/).queryEndingAtValue("2016/09/17")
+
+        // 数字では上手くいってたから文字列の問題？ハイフンをなくしてやってみよう
+
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             var habitLogs: [HabitLog] = []
 
