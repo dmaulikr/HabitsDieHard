@@ -16,10 +16,12 @@ class HabitLog: CustomStringConvertible {
         case Done = "Done"
         case Missed = "Missed"
     }
-    let userID: String
+
     let date: Date
-    var key: String?
-    let habitKey: String
+    fileprivate let userID: String
+    fileprivate var key: String?
+    fileprivate let habitKey: String
+
     var state: HabitLogState = HabitLogState.Unassigned {
         didSet {
             save()
@@ -34,7 +36,6 @@ class HabitLog: CustomStringConvertible {
         self.date = date
     }
 
-    // todo remove
     convenience init(habitKey: String, userID: String, date: Date) {
         self.init(key: nil, habitKey: habitKey, userID: userID, date: date, state: .Unassigned)
     }
