@@ -99,6 +99,7 @@
 		B3014FF81D675000001D860F /* HabitsDieHard */ = {
 			isa = PBXGroup;
 			children = (
+				B3A17B801D8B1269001737A2 /* Models */,
 				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
 				B3014FFB1D675001001D860F /* ViewController.swift */,
@@ -106,16 +107,23 @@
 				B30150001D675001001D860F /* Assets.xcassets */,
 				B30150021D675001001D860F /* LaunchScreen.storyboard */,
 				B30150051D675001001D860F /* Info.plist */,
-				B3BAB0071D68727D00F20252 /* Habit.swift */,
-				B3892FDD1D79C32A003CA2D2 /* HabitLog.swift */,
-				B3A17B7E1D8B0D55001737A2 /* HabitRepository.swift */,
-				B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */,
 				B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */,
 				B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */,
 				B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */,
 				B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */,
 			);
 			path = HabitsDieHard;
+			sourceTree = "<group>";
+		};
+		B3A17B801D8B1269001737A2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3BAB0071D68727D00F20252 /* Habit.swift */,
+				B3892FDD1D79C32A003CA2D2 /* HabitLog.swift */,
+				B3A17B7E1D8B0D55001737A2 /* HabitRepository.swift */,
+				B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
