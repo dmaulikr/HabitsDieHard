@@ -15,7 +15,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
 
     @IBOutlet weak var weeklyTableView: UITableView!
-    fileprivate let today = Date()
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
 
@@ -29,24 +28,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
-        // userid
+        // todo
+        let userID = "1234"
+
         // repository
         // remove done var
         // save
         // key
-        HabitRepository(userID: "1234").getHabits { (habits, error) in
+        HabitRepository(userID: userID).getHabits { (habits, error) in
             self.habits = habits
-            let startDate = self.today.getSunday()
+            let today = Date()
+            let startDate = today.getSunday()
             let endDate = startDate.dateByAdding(delta: 6)
             for habit in habits {
-                HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                HabitLogRepository(userID: userID).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
                     if error == nil {
-
                         self.habitToLog[habit] = habitLogs
-                        //                        // Ah todo
-                        //                        self.habitsWeeklyLog.append(habitLogs)
-
-                        //                        print("repo=\(habitLogs)")
                         self.weeklyTableView.reloadData()
                     } else {
                         // todo
@@ -54,40 +51,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
         }
-        /*
-        let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habits").child("1234")
-        let query = myHabitLogsRef.queryOrdered(byChild: "name")
-        query.observeSingleEvent(of: .value, with: { (snapshot) in
-            var habits: [Habit] = []
-            for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
-                if let habitLogDic = habitLogSnapshot.value as? [String: String] {
-                    habits.append(Habit(key: habitLogSnapshot.key, name: habitLogDic["name"]!))
-                }
-            }
-            // habit types
-            // auth
-            self.habits = habits
-            let startDate = self.today.getSunday()
-            let endDate = startDate.dateByAdding(delta: 6)
-            for habit in habits {
-                HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
-                    if error == nil {
-
-                        self.habitToLog[habit] = habitLogs
-//                        // Ah todo
-//                        self.habitsWeeklyLog.append(habitLogs)
-
-//                        print("repo=\(habitLogs)")
-                        self.weeklyTableView.reloadData()
-                    } else {
-                        // todo
-                    }
-                }
-            }
-        })
-*/
-
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -102,6 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if section == 0 {
             if let headerView = Bundle.main.loadNibNamed("WeeklyHeaderView", owner: self, options: nil)?.first as? WeeklyHeaderView {
                 let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+                let today = Date()
                 let components = calendar.dateComponents([.weekday], from: today)
                 headerView.dayOfWeek = components.weekday!
                 return headerView
