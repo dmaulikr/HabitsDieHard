@@ -70,8 +70,10 @@ class WeeklyTableViewCell: UITableViewCell {
         let index = dayIndexFromGestureRecognizer(view)
         if index == -1 {
             return nil
-        } else {
+        } else if (habitLogsForTargetWeek.count > index) {
             return habitLogsForTargetWeek[index]
+        } else {
+            return nil
         }
     }
 

@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class Habit: CustomStringConvertible {
+class Habit: CustomStringConvertible, Hashable {
     let key: String
     let name: String
     
@@ -19,5 +19,9 @@ class Habit: CustomStringConvertible {
     }
 
     var description: String { return "Habit {name:\(name)}" }
+    var hashValue: Int { return unsafeAddressOf(self).hashValue }
 }
 
+func ==(lhs: Habit, rhs: Habit) -> Bool {
+    return lhs === rhs
+}

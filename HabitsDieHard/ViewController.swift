@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private let weeklyCellIdentifier = "WeeklyTableViewCell"
     private let today = NSDate()
     private var habitsWeeklyLog: [[HabitLog]] = []
+    private var habitToLog: [Habit: [HabitLog]] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,10 +60,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             for habit in habits {
                 HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
                     if error == nil {
-                        // Ah todo
-                        self.habitsWeeklyLog.append(habitLogs)
 
-                        print("repo=\(habitLogs)")
+                        self.habitToLog[habit] = habitLogs
+//                        // Ah todo
+//                        self.habitsWeeklyLog.append(habitLogs)
+
+//                        print("repo=\(habitLogs)")
                         self.weeklyTableView.reloadData()
                     } else {
                         // todo
@@ -75,11 +78,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return habitsWeeklyLog.count
+        return habits.count
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return habitsWeeklyLog.count;
+        return 2;
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -112,7 +115,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
-            cell.habitLogsForTargetWeek = habitsWeeklyLog[indexPath.section]
+            let habit: Habit = habits[indexPath.section]
+            if let habitLogs: [HabitLog] = habitToLog[habit] {
+                cell.habitLogsForTargetWeek = habitLogs
+            }
             return cell
         }
     }
