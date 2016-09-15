@@ -17,7 +17,7 @@ class HabitLog: CustomStringConvertible {
         case Missed = "Missed"
     }
     let userID: String
-    let date: NSDate
+    let date: Date
     var key: String?
     let habitKey: String
     var state: HabitLogState = HabitLogState.Unassigned {
@@ -26,7 +26,7 @@ class HabitLog: CustomStringConvertible {
         }
     }
 
-    init(key: String?, habitKey: String, userID: String, date: NSDate, state: HabitLogState) {
+    init(key: String?, habitKey: String, userID: String, date: Date, state: HabitLogState) {
         self.key = key
         self.habitKey = habitKey
         self.userID = userID
@@ -35,15 +35,15 @@ class HabitLog: CustomStringConvertible {
     }
 
     // todo remove
-    convenience init(habitKey: String, userID: String, date: NSDate) {
+    convenience init(habitKey: String, userID: String, date: Date) {
         self.init(key: nil, habitKey: habitKey, userID: userID, date: date, state: .Unassigned)
     }
 
     convenience init(key: String, habitKey: String, userID: String, dateString: String, stateString: String) {
         if let habitLogState = HabitLogState(rawValue: stateString) {
-            self.init(key: key, habitKey: habitKey, userID: userID, date: NSDate(dateString: dateString), state: habitLogState)
+            self.init(key: key, habitKey: habitKey, userID: userID, date: Date(dateString: dateString), state: habitLogState)
         } else {
-            self.init(key: key, habitKey: habitKey, userID: userID, date: NSDate(dateString: dateString), state: .Unassigned)
+            self.init(key: key, habitKey: habitKey, userID: userID, date: Date(dateString: dateString), state: .Unassigned)
         }
     }
 

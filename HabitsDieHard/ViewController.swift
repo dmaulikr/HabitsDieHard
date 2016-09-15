@@ -11,23 +11,23 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var weeklyTableView: UITableView!
-    private var habits: [Habit] = []
-    private let habitCellIdentifier = "habitCell"
-    private let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
-    private let weeklyCellIdentifier = "WeeklyTableViewCell"
-    private let today = NSDate()
-    private var habitsWeeklyLog: [[HabitLog]] = []
-    private var habitToLog: [Habit: [HabitLog]] = [:]
+    fileprivate var habits: [Habit] = []
+    fileprivate let habitCellIdentifier = "habitCell"
+    fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
+    fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
+    fileprivate let today = Date()
+    fileprivate var habitsWeeklyLog: [[HabitLog]] = []
+    fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
-        weeklyTableView.registerNib(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
-        weeklyTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: weeklyTitleCellIdentifier)
+        weeklyTableView.register(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
+        weeklyTableView.register(UITableViewCell.self, forCellReuseIdentifier: weeklyTitleCellIdentifier)
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
-        weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
 /*
         let ref = FIRDatabase.database().reference()
@@ -44,8 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // key
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child("habits").child("1234")
-        let query = myHabitLogsRef.queryOrderedByChild("name")
-        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        let query = myHabitLogsRef.queryOrdered(byChild: "name")
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
             var habits: [Habit] = []
             for case let habitLogSnapshot as FIRDataSnapshot in snapshot.children {
                 if let habitLogDic = habitLogSnapshot.value as? [String: String] {
@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // auth
             self.habits = habits
             let startDate = self.today.getSunday()
-            let endDate = startDate.dateByAdding(6)
+            let endDate = startDate.dateByAdding(delta: 6)
             for habit in habits {
                 HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
                     if error == nil {
@@ -77,20 +77,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return habits.count
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2;
     }
 
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            if let headerView = NSBundle.mainBundle().loadNibNamed("WeeklyHeaderView", owner: self, options: nil).first as? WeeklyHeaderView {
-                let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-                let components = calendar.components(.Weekday, fromDate: today)
-                headerView.dayOfWeek = components.weekday
+            if let headerView = Bundle.main.loadNibNamed("WeeklyHeaderView", owner: self, options: nil)?.first as? WeeklyHeaderView {
+                let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+                let components = calendar.dateComponents([.weekday], from: today)
+                headerView.dayOfWeek = components.weekday!
                 return headerView
             } else {
                 return nil
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 20
         } else {
@@ -108,14 +108,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(weeklyTitleCellIdentifier, forIndexPath: indexPath)
-            cell.textLabel?.text = habits[indexPath.section].name
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: weeklyTitleCellIdentifier, for: indexPath)
+            cell.textLabel?.text = habits[(indexPath as NSIndexPath).section].name
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(weeklyCellIdentifier, forIndexPath: indexPath) as! WeeklyTableViewCell
-            let habit: Habit = habits[indexPath.section]
+            let cell = tableView.dequeueReusableCell(withIdentifier: weeklyCellIdentifier, for: indexPath) as! WeeklyTableViewCell
+            let habit: Habit = habits[(indexPath as NSIndexPath).section]
             if let habitLogs: [HabitLog] = habitToLog[habit] {
                 cell.habitLogsForTargetWeek = habitLogs
             }

@@ -19,7 +19,7 @@ class Habit: CustomStringConvertible, Hashable {
     }
 
     var description: String { return "Habit {name:\(name)}" }
-    var hashValue: Int { return unsafeAddressOf(self).hashValue }
+    var hashValue: Int { return Unmanaged.passUnretained(self).toOpaque().hashValue }
 }
 
 func ==(lhs: Habit, rhs: Habit) -> Bool {

@@ -18,13 +18,13 @@ class HabitLogRepository {
         self.userID = userID
     }
 
-    func getRangeWithHabit(habit: Habit, startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+    func getRangeWithHabit(_ habit: Habit, startDate: Date, endDate: Date, complition: @escaping ([HabitLog], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child(HabitLog.rootKey).child(self.userID).child(habit.key)
 
         // don't use "2016-09-16" format, - would be recognized as minus.
-        let query = myHabitLogsRef.queryOrderedByChild("date").queryStartingAtValue(startDate.simpleDateKey()).queryEndingAtValue(endDate.simpleDateKey())
-        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+        let query = myHabitLogsRef.queryOrdered(byChild: "date").queryStarting(atValue: startDate.simpleDateKey()).queryEnding(atValue: endDate.simpleDateKey())
+        query.observeSingleEvent(of: .value, with: { (snapshot) in
             var habitLogs: [HabitLog] = []
 
             // we are using children enumerator to keep order
@@ -37,21 +37,21 @@ class HabitLogRepository {
         })
     }
 
-    func getFilledRangeWithHabit(habit: Habit, startDate: NSDate, endDate: NSDate, complition: ([HabitLog], NSError?) -> Void) {
+    func getFilledRangeWithHabit(_ habit: Habit, startDate: Date, endDate: Date, complition: @escaping ([HabitLog], NSError?) -> Void) {
         getRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
             var ret: [HabitLog] = []
             var index = 0
             var targetDate = startDate
-            while targetDate.compare(endDate) != NSComparisonResult.OrderedDescending {
+            while targetDate.compare(endDate) != ComparisonResult.orderedDescending {
                 if index >= habitLogs.count {
-                    ret.append(HabitLog(habitKey: habit.key, userID: self.userID, date: targetDate))
+                    ret.append(HabitLog(habitKey: habit.key, userID: self.userID, date: targetDate ))
                 } else if habitLogs[index].date.simpleDateKey() == targetDate.simpleDateKey() {
                     ret.append(habitLogs[index])
                     index += 1
                 } else {
                     ret.append(HabitLog(habitKey: habit.key, userID: self.userID, date: targetDate))
                 }
-                targetDate = targetDate.dateByAdding(1)
+                targetDate = targetDate.dateByAdding(delta: 1)
             }
             complition(ret, nil)
         }

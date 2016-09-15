@@ -1,5 +1,5 @@
 //
-//  NSDateExtensions.swift
+//  DateExtensions.swift
 //  HabitsDieHard
 //
 //  Created by Taro Minowa on 8/22/16.
@@ -8,68 +8,63 @@
 
 import Foundation
 
-extension NSDate
+extension Date
 {
     // From http://stackoverflow.com/questions/24089999/how-do-you-create-a-swift-date-object
-    convenience init(dateString: String) {
-        let dateStringFormatter = NSDateFormatter()
+    init(dateString: String) {
+        let dateStringFormatter = DateFormatter()
         dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let d = dateStringFormatter.dateFromString(dateString)!
-        self.init(timeInterval:0, sinceDate:d)
+        dateStringFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let d = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:d)
     }
 
     // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/DatesAndTimes/Articles/dtCalendricalCalculations.html#//apple_ref/doc/uid/TP40007836-SW12
-    public func getSunday() -> NSDate {
-        let gregorianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)
+    public func getSunday() -> Date {
+        let gregorianCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
 
         // Get the weekday component of the current date
-        let weekdayComponents = gregorianCalendar!.components(NSCalendarUnit.Weekday, fromDate:self)
+        let weekdayComponents = gregorianCalendar.dateComponents([.weekday], from:self)
 
         /*
          Create a date components to represent the number of days to subtract from the current date.
          The weekday value for Sunday in the Gregorian calendar is 1, so subtract 1 from the number of days to subtract from the date in question.  (If today is Sunday, subtract 0 days.)
          */
-        let componentsToSubtract = NSDateComponents()
-        componentsToSubtract.day = 0 - (weekdayComponents.weekday - 1);
+        var componentsToSubtract = DateComponents()
+        componentsToSubtract.day = 0 - (weekdayComponents.weekday! - 1);
 
-        let beginningOfWeek = gregorianCalendar!.dateByAddingComponents(componentsToSubtract, toDate:self, options:NSCalendarOptions(rawValue: 0))
+        let beginningOfWeek = gregorianCalendar.date(byAdding: componentsToSubtract, to:self);
 
         /*
          Optional step:
          beginningOfWeek now has the same hour, minute, and second as the original date (today).
          To normalize to midnight, extract the year, month, and day components and create a new date from those components.
          */
-        let components = gregorianCalendar!.components([.Year, .Month, .Day], fromDate: beginningOfWeek!)
-        return gregorianCalendar!.dateFromComponents(components)!
+        let components = gregorianCalendar.dateComponents([.year, .month, .day], from: beginningOfWeek!)
+        return gregorianCalendar.date(from: components)!
     }
 
-    public func getWholeWeekDates() -> [NSDate] {
+    public func getWholeWeekDates() -> [Date] {
         let sunday = getSunday()
         var weekArray = [sunday]
-        let gregorianCalendar = NSCalendar(calendarIdentifier:NSCalendarIdentifierGregorian)
+        let gregorianCalendar = Calendar(identifier: Calendar.Identifier.gregorian)
         for i in 1...6 {
-            let componentToAdd = NSDateComponents()
+            var componentToAdd = DateComponents()
             componentToAdd.day = i
-            let date = gregorianCalendar!.dateByAddingComponents(componentToAdd, toDate: sunday, options: NSCalendarOptions(rawValue: 0))
+            let date = gregorianCalendar.date(byAdding: componentToAdd, to: sunday)
             weekArray.append(date!)
         }
         return weekArray
     }
 
     public func simpleDateKey() -> String {
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
 
-    public func dateByAdding(delta: Int) -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        return calendar.dateByAddingUnit(
-            .Day,
-            value: delta,
-            toDate: self,
-            options: []
-        )!
+    public func dateByAdding(delta: Int) -> Date {
+        let calendar = Calendar.current
+        return calendar.date(byAdding: .day, value: delta, to: self)!
     }
 }

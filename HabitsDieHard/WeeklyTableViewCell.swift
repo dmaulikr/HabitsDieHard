@@ -16,7 +16,7 @@ class WeeklyTableViewCell: UITableViewCell {
     @IBOutlet weak var fridayView: UIView!
     @IBOutlet weak var saturdayView: UIView!
     @IBOutlet weak var sundayView: UIView!
-    let borderColor = UIColor.grayColor().CGColor
+    let borderColor = UIColor.gray.cgColor
     let borderWidth: CGFloat = 0.5
     var weekDayViews: [UIView] = []
     var habitLogsForTargetWeek: [HabitLog] = []
@@ -32,8 +32,8 @@ class WeeklyTableViewCell: UITableViewCell {
         }
     }
 
-    func dayTapped(gestureRecognizer: UIGestureRecognizer) {
-        gestureRecognizer.view?.backgroundColor = UIColor.greenColor()
+    func dayTapped(_ gestureRecognizer: UIGestureRecognizer) {
+        gestureRecognizer.view?.backgroundColor = UIColor.green
         if let view: UIView = gestureRecognizer.view {
             if let habitLog: HabitLog = viewToHabitLog(view) {
                 switch habitLog.state {
@@ -55,18 +55,18 @@ class WeeklyTableViewCell: UITableViewCell {
             if let habitLog: HabitLog = viewToHabitLog(view) {
                 switch habitLog.state {
                 case .Done:
-                    view.backgroundColor = UIColor.greenColor()
+                    view.backgroundColor = UIColor.green
                 case .Missed:
-                    view.backgroundColor = UIColor.redColor()
+                    view.backgroundColor = UIColor.red
                 case .Unassigned:
-                    view.backgroundColor = UIColor.whiteColor()
+                    view.backgroundColor = UIColor.white
                 }
             }
         }
 
     }
 
-    private func viewToHabitLog(view: UIView) -> HabitLog? {
+    fileprivate func viewToHabitLog(_ view: UIView) -> HabitLog? {
         let index = dayIndexFromGestureRecognizer(view)
         if index == -1 {
             return nil
@@ -78,7 +78,7 @@ class WeeklyTableViewCell: UITableViewCell {
     }
 
 
-    private func dayIndexFromGestureRecognizer(view: UIView) -> Int {
+    fileprivate func dayIndexFromGestureRecognizer(_ view: UIView) -> Int {
         for i in 0...weekDayViews.count {
             if weekDayViews[i] == view {
                 return i
@@ -88,7 +88,7 @@ class WeeklyTableViewCell: UITableViewCell {
         return -1
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
