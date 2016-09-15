@@ -10,13 +10,13 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var weeklyTableView: UITableView!
-    fileprivate var habits: [Habit] = []
     fileprivate let habitCellIdentifier = "habitCell"
     fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
+
+    @IBOutlet weak var weeklyTableView: UITableView!
     fileprivate let today = Date()
-    fileprivate var habitsWeeklyLog: [[HabitLog]] = []
+    fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
 
     override func viewDidLoad() {
@@ -28,14 +28,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-
-/*
-        let ref = FIRDatabase.database().reference()
-        let myHabitLogsRef = ref.child("habits").child("1234")
-        let key = myHabitLogsRef.childByAutoId().key
-        let value = [ "created_at": NSDate().simpleDateKey(), "name": "Jogging"]
-        myHabitLogsRef.child(key).setValue(value)
-*/
 
         // userid
         // repository
