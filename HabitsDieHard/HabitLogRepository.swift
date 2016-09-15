@@ -11,7 +11,6 @@ import Firebase
 
 class HabitLogRepository {
 
-
     let userID: String
 
     init(userID: String) {

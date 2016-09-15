@@ -34,6 +34,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // remove done var
         // save
         // key
+        HabitRepository(userID: "1234").getHabits { (habits, error) in
+            self.habits = habits
+            let startDate = self.today.getSunday()
+            let endDate = startDate.dateByAdding(delta: 6)
+            for habit in habits {
+                HabitLogRepository(userID: "1234").getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                    if error == nil {
+
+                        self.habitToLog[habit] = habitLogs
+                        //                        // Ah todo
+                        //                        self.habitsWeeklyLog.append(habitLogs)
+
+                        //                        print("repo=\(habitLogs)")
+                        self.weeklyTableView.reloadData()
+                    } else {
+                        // todo
+                    }
+                }
+            }
+        }
+        /*
         let ref = FIRDatabase.database().reference()
         let myHabitLogsRef = ref.child("habits").child("1234")
         let query = myHabitLogsRef.queryOrdered(byChild: "name")
@@ -65,7 +86,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
         })
-
+*/
 
     }
 
