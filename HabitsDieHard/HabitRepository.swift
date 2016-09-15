@@ -10,8 +10,7 @@ import Foundation
 import Firebase
 
 class HabitRepository {
-    static let rootKey = "habits"
-
+    
     fileprivate let userID: String
 
     init(userID: String) {
@@ -20,7 +19,7 @@ class HabitRepository {
 
     func getHabits(complition: @escaping ([Habit], NSError?) -> Void) {
         let ref = FIRDatabase.database().reference()
-        let habitsRef = ref.child(HabitRepository.rootKey).child(userID)
+        let habitsRef = ref.child(Habit.rootKey).child(userID)
         let query = habitsRef.queryOrdered(byChild: "name")
         query.observeSingleEvent(of: .value, with: { (snapshot) in
             var habits: [Habit] = []

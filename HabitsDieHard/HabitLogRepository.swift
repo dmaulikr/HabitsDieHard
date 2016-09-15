@@ -11,7 +11,7 @@ import Firebase
 
 class HabitLogRepository {
 
-    let userID: String
+    fileprivate let userID: String
 
     init(userID: String) {
         self.userID = userID

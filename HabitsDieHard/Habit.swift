@@ -10,6 +10,9 @@ import Foundation
 import Firebase
 
 class Habit: CustomStringConvertible, Hashable {
+
+    static let rootKey = "habits"
+
     let key: String
     let name: String
     
