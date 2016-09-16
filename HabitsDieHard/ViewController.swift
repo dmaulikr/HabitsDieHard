@@ -30,12 +30,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
         // todo
+        // Auth
+        // Save Habits
+        // Make font smaller
         let userID = "1234"
 
-        // repository
-        // remove done var
-        // save
-        // key
         HabitRepository(userID: userID).getHabits { (habits, error) in
             self.habits = habits
             let today = Date()
@@ -87,16 +86,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath as NSIndexPath).row == 0 {
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: weeklyTitleCellIdentifier, for: indexPath)
-            cell.textLabel?.text = habits[(indexPath as NSIndexPath).section].name
+            cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: weeklyCellIdentifier, for: indexPath) as! WeeklyTableViewCell
-            let habit: Habit = habits[(indexPath as NSIndexPath).section]
+            let habit: Habit = habits[indexPath.section]
             if let habitLogs: [HabitLog] = habitToLog[habit] {
                 cell.habitLogsForTargetWeek = habitLogs
             }
+            cell.backgroundColor = UIColor.blue
             return cell
         }
     }
