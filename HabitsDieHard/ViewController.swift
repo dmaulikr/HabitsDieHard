@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
     fileprivate let firstSection = 0
+    fileprivate var user: FIRUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,24 +30,38 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
 
-        // todo
-        // Auth
+        // Todo
         // Save Habits
         // Make font smaller
-        let userID = "1234"
 
-        HabitRepository(userID: userID).getHabits { (habits, error) in
-            self.habits = habits
-            let today = Date()
-            let startDate = today.getSunday()
-            let endDate = startDate.dateByAdding(delta: 6)
-            for habit in habits {
-                HabitLogRepository(userID: userID).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
-                    if error == nil {
-                        self.habitToLog[habit] = habitLogs
-                        self.weeklyTableView.reloadData()
-                    } else {
-                        // todo
+        // Todo
+        //   Handle error
+        //   Move this to somewhere else
+        FIRAuth.auth()?.signInAnonymously() { (user, error) in
+            if error == nil {
+                self.user = user
+                self.loadHabits()
+            } else {
+                // todo
+            }
+        }
+    }
+
+    private func loadHabits() {
+        if user != nil {
+            HabitRepository(userID: user!.uid).getHabits { (habits, error) in
+                self.habits = habits
+                let today = Date()
+                let startDate = today.getSunday()
+                let endDate = startDate.dateByAdding(delta: 6)
+                for habit in habits {
+                    HabitLogRepository(userID: self.user!.uid).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                        if error == nil {
+                            self.habitToLog[habit] = habitLogs
+                            self.weeklyTableView.reloadData()
+                        } else {
+                            // todo
+                        }
                     }
                 }
             }
@@ -89,6 +104,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: weeklyTitleCellIdentifier, for: indexPath)
             cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+            cell.textLabel?.text = habits[(indexPath as NSIndexPath).section].name
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: weeklyCellIdentifier, for: indexPath) as! WeeklyTableViewCell
@@ -96,7 +112,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let habitLogs: [HabitLog] = habitToLog[habit] {
                 cell.habitLogsForTargetWeek = habitLogs
             }
-            cell.backgroundColor = UIColor.blue
             return cell
         }
     }

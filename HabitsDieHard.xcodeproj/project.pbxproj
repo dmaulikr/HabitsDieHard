@@ -35,6 +35,7 @@
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitLogRepository.swift; sourceTree = "<group>"; };
+		B3767F991D8C1B3900CCCC09 /* HabitsDieHard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitsDieHard.entitlements; sourceTree = "<group>"; };
 		B3892FDD1D79C32A003CA2D2 /* HabitLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitLog.swift; path = ../HabitLog.swift; sourceTree = "<group>"; };
 		B39628351D784C0F00406806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3A17B7E1D8B0D55001737A2 /* HabitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitRepository.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		B3014FF81D675000001D860F /* HabitsDieHard */ = {
 			isa = PBXGroup;
 			children = (
+				B3767F991D8C1B3900CCCC09 /* HabitsDieHard.entitlements */,
 				B3A17B801D8B1269001737A2 /* Models */,
 				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
@@ -161,7 +163,13 @@
 				TargetAttributes = {
 					B3014FF51D675000001D860F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 66VVV53RUJ;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -379,6 +387,8 @@
 			baseConfigurationReference = C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HabitsDieHard/HabitsDieHard.entitlements;
+				DEVELOPMENT_TEAM = 66VVV53RUJ;
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mona.HabitsDieHard;
@@ -392,6 +402,8 @@
 			baseConfigurationReference = A4CEE65341ECF71352690BB3 /* Pods-HabitsDieHard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HabitsDieHard/HabitsDieHard.entitlements;
+				DEVELOPMENT_TEAM = 66VVV53RUJ;
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mona.HabitsDieHard;
