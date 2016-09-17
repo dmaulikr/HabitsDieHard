@@ -36,7 +36,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Todo
         // Save Habits
         // Make font smaller
-        // loading indicator
         // non-anonymous user support
         // todo Save
     }
