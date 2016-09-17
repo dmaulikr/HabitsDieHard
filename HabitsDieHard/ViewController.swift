@@ -31,13 +31,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-
         weeklyTableView.backgroundView = self.activityIndicatorView
 
-        // testing
-//        let loginButton = FBSDKLoginButton()
-//        loginButton.center = self.view.center
-//        self.view.addSubview(loginButton)
+        self.user = FIRAuth.auth()?.currentUser
+        assert(self.user != nil)
 
         // Todo
         // Save Habits
@@ -50,18 +47,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Todo
         //   Handle error
         //   Move this to somewhere else
-        FIRAuth.auth()?.signInAnonymously() { (user, error) in
-            if error == nil {
-                self.user = user
-            //    self.loadHabits()
-            } else {
-                // todo
-            }
-        }
+        self.loadHabits()
     }
 
     private func loadHabits() {
         if user != nil {
+
+            // todo Save
+/*
+            let ref = FIRDatabase.database().reference()
+            let key = ref.child(Habit.rootKey).child(user!.uid).childByAutoId().key
+            ref.child("\(Habit.rootKey)/\(user!.uid)/\(key)").setValue([ "created_at": Date().simpleDateKey(), "name": "Jogging"])
+
+            let ref2 = FIRDatabase.database().reference()
+            let key2 = ref2.child(Habit.rootKey).child(user!.uid).childByAutoId().key
+            ref2.child("\(Habit.rootKey)/\(user!.uid)/\(key2)").setValue([ "created_at": Date().simpleDateKey(), "name": "Swift"])
+*/
             self.activityIndicatorView.startAnimating()
             HabitRepository(userID: user!.uid).getHabits { (habits, error) in
                 self.habits = habits

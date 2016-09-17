@@ -26,6 +26,7 @@
 		B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */; };
 		B3D426CF1D6D07D300C3FAC5 /* WeeklyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */; };
 		B3D9489B1D8D868B00114BEE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D9489A1D8D868B00114BEE /* Bolts.framework */; };
+		B3D9489D1D8D8B4500114BEE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D9489C1D8D8B4500114BEE /* LoginViewController.swift */; };
 		D7C4461EBD0E80B51B119CC4 /* Pods_HabitsDieHard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyHeaderView.swift; sourceTree = "<group>"; };
 		B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHeaderView.xib; sourceTree = "<group>"; };
 		B3D9489A1D8D868B00114BEE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		B3D9489C1D8D8B4500114BEE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitsDieHard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitsDieHard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +123,7 @@
 				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
 				B3014FFB1D675001001D860F /* ViewController.swift */,
+				B3D9489C1D8D8B4500114BEE /* LoginViewController.swift */,
 				B3014FFD1D675001001D860F /* Main.storyboard */,
 				B30150001D675001001D860F /* Assets.xcassets */,
 				B30150021D675001001D860F /* LaunchScreen.storyboard */,
@@ -284,6 +287,7 @@
 				B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */,
 				B328D33A1D7FC78E00DA0349 /* HabitLogRepository.swift in Sources */,
 				B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */,
+				B3D9489D1D8D8B4500114BEE /* LoginViewController.swift in Sources */,
 				B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

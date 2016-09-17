@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+
+        // Firebase
         FIRApp.configure()
         FIRDatabase.database().persistenceEnabled = false
+
+        // Facebook
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        var initialViewController: UIViewController!
+        if let _ = FIRAuth.auth()?.currentUser {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
+        } else {
+            initialViewController = LoginViewController()
+        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(app,
+                                                                     open: url,
+                                                                     sourceApplication: options[.sourceApplication] as! String,
+                                                                     annotation: options[.annotation])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
