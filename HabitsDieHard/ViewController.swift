@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
 
     @IBOutlet weak var weeklyTableView: UITableView!
+    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
     fileprivate let firstSection = 0
@@ -29,6 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         weeklyTableView.reloadData()
         weeklyTableView.rowHeight = UITableViewAutomaticDimension
         weeklyTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+
+        weeklyTableView.backgroundView = self.activityIndicatorView
 
         // Todo
         // Save Habits
@@ -54,6 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     private func loadHabits() {
         if user != nil {
+            self.activityIndicatorView.startAnimating()
             HabitRepository(userID: user!.uid).getHabits { (habits, error) in
                 self.habits = habits
                 let today = Date()
@@ -67,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         } else {
                             // todo
                         }
+                        self.activityIndicatorView.stopAnimating()
                     }
                 }
             }
