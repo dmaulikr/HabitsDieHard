@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     fileprivate let habitCellIdentifier = "habitCell"
@@ -33,6 +34,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         weeklyTableView.backgroundView = self.activityIndicatorView
 
+        // testing
+//        let loginButton = FBSDKLoginButton()
+//        loginButton.center = self.view.center
+//        self.view.addSubview(loginButton)
+
         // Todo
         // Save Habits
         // Make font smaller
@@ -47,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         FIRAuth.auth()?.signInAnonymously() { (user, error) in
             if error == nil {
                 self.user = user
-                self.loadHabits()
+            //    self.loadHabits()
             } else {
                 // todo
             }

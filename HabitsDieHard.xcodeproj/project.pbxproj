@@ -13,6 +13,9 @@
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
 		B328D33A1D7FC78E00DA0349 /* HabitLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */; };
+		B34F46E21D8D8523009C2251 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34F46DF1D8D8523009C2251 /* FBSDKCoreKit.framework */; };
+		B34F46E31D8D8523009C2251 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34F46E01D8D8523009C2251 /* FBSDKLoginKit.framework */; };
+		B34F46E41D8D8523009C2251 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34F46E11D8D8523009C2251 /* FBSDKShareKit.framework */; };
 		B3767F9B1D8C228D00CCCC09 /* HabitLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3767F9A1D8C228D00CCCC09 /* HabitLog.swift */; };
 		B39628361D784C0F00406806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B39628351D784C0F00406806 /* GoogleService-Info.plist */; };
 		B3A17B7F1D8B0D55001737A2 /* HabitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A17B7E1D8B0D55001737A2 /* HabitRepository.swift */; };
@@ -22,6 +25,7 @@
 		B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */; };
 		B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */; };
 		B3D426CF1D6D07D300C3FAC5 /* WeeklyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */; };
+		B3D9489B1D8D868B00114BEE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D9489A1D8D868B00114BEE /* Bolts.framework */; };
 		D7C4461EBD0E80B51B119CC4 /* Pods_HabitsDieHard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +39,9 @@
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitLogRepository.swift; sourceTree = "<group>"; };
+		B34F46DF1D8D8523009C2251 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		B34F46E01D8D8523009C2251 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		B34F46E11D8D8523009C2251 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		B3767F991D8C1B3900CCCC09 /* HabitsDieHard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitsDieHard.entitlements; sourceTree = "<group>"; };
 		B3767F9A1D8C228D00CCCC09 /* HabitLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitLog.swift; sourceTree = "<group>"; };
 		B39628351D784C0F00406806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -45,6 +52,7 @@
 		B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyHeaderView.swift; sourceTree = "<group>"; };
 		B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeeklyHeaderView.xib; sourceTree = "<group>"; };
+		B3D9489A1D8D868B00114BEE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitsDieHard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DFB3902B741CF20F983675 /* Pods-HabitsDieHard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitsDieHard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,7 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D9489B1D8D868B00114BEE /* Bolts.framework in Frameworks */,
+				B34F46E41D8D8523009C2251 /* FBSDKShareKit.framework in Frameworks */,
 				D7C4461EBD0E80B51B119CC4 /* Pods_HabitsDieHard.framework in Frameworks */,
+				B34F46E21D8D8523009C2251 /* FBSDKCoreKit.framework in Frameworks */,
+				B34F46E31D8D8523009C2251 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +85,10 @@
 		0FE9436B7CD2DAA716884A10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D9489A1D8D868B00114BEE /* Bolts.framework */,
+				B34F46DF1D8D8523009C2251 /* FBSDKCoreKit.framework */,
+				B34F46E01D8D8523009C2251 /* FBSDKLoginKit.framework */,
+				B34F46E11D8D8523009C2251 /* FBSDKShareKit.framework */,
 				B792B7ED3F1E1104C4072C5D /* Pods_HabitsDieHard.framework */,
 			);
 			name = Frameworks;
@@ -389,6 +405,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HabitsDieHard/HabitsDieHard.entitlements;
 				DEVELOPMENT_TEAM = 66VVV53RUJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mona.HabitsDieHard;
@@ -404,6 +424,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = HabitsDieHard/HabitsDieHard.entitlements;
 				DEVELOPMENT_TEAM = 66VVV53RUJ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HabitsDieHard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Mona.HabitsDieHard;
