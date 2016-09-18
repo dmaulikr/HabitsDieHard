@@ -52,8 +52,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         assert(self.user != nil)
 
         // Todo
-        // UINavigationController
-        // top spacing
         // title should be in UINavC
         // +
         // help message when empty
