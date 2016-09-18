@@ -21,29 +21,31 @@ class WeeklyHeaderView: UIView {
 
     var targetDate: Date = Date() {
         didSet {
-            if targetDate.getSunday() == Date().getSunday() {
+            let today = Date()
+            // update week label
+            if targetDate.getSunday() == today.getSunday() {
                 label.text = "This Week"
+
+                // Highlight today
+                // this should not be called from initializer
+                if labels.isEmpty {
+                    labels.append(mondayLabel)
+                    labels.append(tuesdayLabel)
+                    labels.append(wednesdayLabel)
+                    labels.append(thursdayLabel)
+                    labels.append(fridayLabel)
+                    labels.append(saturdayLabel)
+                    labels.append(sundayLabel)
+                }
+                let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+                let components = calendar.dateComponents([.weekday], from: today)
+                labels[components.weekday! - 1].textColor = UIColor.orange
+
             } else if (targetDate.getSunday() == Date().lastWeek().getSunday()) {
                 label.text = "Last Week"
             } else {
                 label.text = "Week of \(targetDate.simpleDateKey())"
             }
-        }
-    }
-
-    var dayOfWeek: Int = 0 {
-        didSet {
-            // this should not be called from initializer
-            if labels.isEmpty {
-                labels.append(mondayLabel)
-                labels.append(tuesdayLabel)
-                labels.append(wednesdayLabel)
-                labels.append(thursdayLabel)
-                labels.append(fridayLabel)
-                labels.append(saturdayLabel)
-                labels.append(sundayLabel)
-            }
-            labels[dayOfWeek - 1].textColor = UIColor.orange
         }
     }
 

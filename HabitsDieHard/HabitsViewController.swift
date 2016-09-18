@@ -105,12 +105,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == firstSection {
             if let headerView = Bundle.main.loadNibNamed("WeeklyHeaderView", owner: self, options: nil)?.first as? WeeklyHeaderView {
-                let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-                let today = Date()
-                let components = calendar.dateComponents([.weekday], from: today)
-                headerView.dayOfWeek = components.weekday!
-                headerView.targetDate = targetDate
-                
+                headerView.targetDate = targetDate          
                 return headerView
             } else {
                 return nil
