@@ -12,6 +12,7 @@
 		B3014FFF1D675001001D860F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3014FFD1D675001001D860F /* Main.storyboard */; };
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
+		B320C50E1D8F3A70007C7913 /* HabitsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320C50D1D8F3A70007C7913 /* HabitsPageViewController.swift */; };
 		B328D33A1D7FC78E00DA0349 /* HabitLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */; };
 		B34F46E21D8D8523009C2251 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34F46DF1D8D8523009C2251 /* FBSDKCoreKit.framework */; };
 		B34F46E31D8D8523009C2251 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34F46E01D8D8523009C2251 /* FBSDKLoginKit.framework */; };
@@ -39,6 +40,7 @@
 		B30150001D675001001D860F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B30150051D675001001D860F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B320C50D1D8F3A70007C7913 /* HabitsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitsPageViewController.swift; sourceTree = "<group>"; };
 		B328D3391D7FC78E00DA0349 /* HabitLogRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitLogRepository.swift; sourceTree = "<group>"; };
 		B34F46DF1D8D8523009C2251 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		B34F46E01D8D8523009C2251 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */,
 				B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */,
 				B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */,
+				B320C50D1D8F3A70007C7913 /* HabitsPageViewController.swift */,
 			);
 			path = HabitsDieHard;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				B328D33A1D7FC78E00DA0349 /* HabitLogRepository.swift in Sources */,
 				B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */,
 				B3D9489D1D8D8B4500114BEE /* LoginViewController.swift in Sources */,
+				B320C50E1D8F3A70007C7913 /* HabitsPageViewController.swift in Sources */,
 				B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

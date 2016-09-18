@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         var initialViewController: UIViewController!
         if let _ = FIRAuth.auth()?.currentUser {
-            initialViewController = ViewController()
+            initialViewController = HabitsPageViewController()
         } else {
             initialViewController = LoginViewController()
         }

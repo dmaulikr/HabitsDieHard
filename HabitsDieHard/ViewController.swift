@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 
-class ViewController: UIViewController /*UIPageViewController*/, UITableViewDataSource, UITableViewDelegate /* , UIPageViewControllerDataSource*/ {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     fileprivate let habitCellIdentifier = "habitCell"
     fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
@@ -21,11 +21,19 @@ class ViewController: UIViewController /*UIPageViewController*/, UITableViewData
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
     fileprivate let firstSection = 0
     fileprivate var user: FIRUser?
+    let targetDate: Date
+
+    init(_ targetDate: Date) {
+        self.targetDate = targetDate
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        return nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        dataSource = self
 
         view.addSubview(weeklyTableView)
         weeklyTableView.delegate = self
@@ -48,6 +56,13 @@ class ViewController: UIViewController /*UIPageViewController*/, UITableViewData
         //   return new VC in the pagination
         //   expose target date
         //   adjust pagenated VC with the date
+        // Change tableViewOffset
+        // habit label shouldn't be selectable
+        // rename viewcontroller
+        // dayOfWeek
+        // add 7 and -7
+        // show what week are we on
+        // make the UIPageView array consistent
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +89,7 @@ class ViewController: UIViewController /*UIPageViewController*/, UITableViewData
             self.activityIndicatorView.startAnimating()
             HabitRepository(userID: user!.uid).getHabits { (habits, error) in
                 self.habits = habits
-                let today = Date()
-                let startDate = today.getSunday()
+                let startDate = self.targetDate.getSunday()
                 let endDate = startDate.dateByAdding(delta: 6)
                 for habit in habits {
                     HabitLogRepository(userID: self.user!.uid).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
@@ -139,20 +153,5 @@ class ViewController: UIViewController /*UIPageViewController*/, UITableViewData
             return cell
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: UIPageViewControllerDataSource    
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
-    }
-
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
-    }
-
 }
 

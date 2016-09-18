@@ -14,6 +14,7 @@ import UIKit
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         let loginButton = FBSDKLoginButton()
         loginButton.center = self.view.center
@@ -39,7 +40,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         print(error.localizedDescription)
                         return
                     } else {
-                        let viewController = ViewController()
+                        let viewController = HabitsPageViewController()
                         UIApplication.shared.keyWindow?.rootViewController?.present(viewController, animated: true, completion: nil)
                     }
                 }
