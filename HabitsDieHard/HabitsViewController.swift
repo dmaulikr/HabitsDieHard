@@ -35,7 +35,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         weeklyTableView = UITableView(frame: self.view.frame, style: .plain)
-        let topInset = 64
+        let topInset: CGFloat = 64.0
         weeklyTableView.contentInset = UIEdgeInsetsMake(topInset, 0.0, 0.0, 0.0);
         weeklyTableView.scrollIndicatorInsets = UIEdgeInsetsMake(topInset, 0.0, 0.0, 0.0);
         view.addSubview(weeklyTableView)
