@@ -20,6 +20,12 @@ class HabitsPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         title = title(date: Date())
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+    }
+
+    func addTapped() {
+
     }
 
     func title(date: Date) -> String {
