@@ -70,6 +70,7 @@
             </constraints>
             <connections>
                 <outlet property="fridayLabel" destination="TTC-V4-Vee" id="6Cu-sU-0lu"/>
+                <outlet property="label" destination="INW-9J-QgV" id="edr-26-GXp"/>
                 <outlet property="mondayLabel" destination="Awv-dX-oOJ" id="eAD-rE-L9v"/>
                 <outlet property="saturdayLabel" destination="JWt-mJ-nGN" id="bm5-Z7-fU3"/>
                 <outlet property="sundayLabel" destination="2Ua-3D-T4Z" id="GG8-Ka-LZX"/>

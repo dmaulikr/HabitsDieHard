@@ -109,6 +109,8 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
                 let today = Date()
                 let components = calendar.dateComponents([.weekday], from: today)
                 headerView.dayOfWeek = components.weekday!
+                headerView.targetDate = targetDate
+                
                 return headerView
             } else {
                 return nil

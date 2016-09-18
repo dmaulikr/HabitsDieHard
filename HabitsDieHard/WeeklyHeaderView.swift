@@ -9,6 +9,7 @@
 import UIKit
 
 class WeeklyHeaderView: UIView {
+    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var mondayLabel: UILabel!
     @IBOutlet weak var tuesdayLabel: UILabel!
     @IBOutlet weak var wednesdayLabel: UILabel!
@@ -17,6 +18,18 @@ class WeeklyHeaderView: UIView {
     @IBOutlet weak var saturdayLabel: UILabel!
     @IBOutlet weak var sundayLabel: UILabel!
     var labels: [UILabel] = []
+
+    var targetDate: Date = Date() {
+        didSet {
+            if targetDate.getSunday() == Date().getSunday() {
+                label.text = "This Week"
+            } else if (targetDate.getSunday() == Date().lastWeek().getSunday()) {
+                label.text = "Last Week"
+            } else {
+                label.text = "Week of \(targetDate.simpleDateKey())"
+            }
+        }
+    }
 
     var dayOfWeek: Int = 0 {
         didSet {
