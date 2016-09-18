@@ -120,7 +120,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == firstSection {
-            return 20
+            return 60
         } else {
             return 0
         }
