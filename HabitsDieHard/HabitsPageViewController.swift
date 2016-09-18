@@ -22,7 +22,7 @@ extension HabitsPageViewController: UIPageViewControllerDataSource {
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let viewController = viewController as? ViewController {
-            let targetDate = viewController.targetDate.dateByAdding(delta: -7)
+            let targetDate = viewController.targetDate.lastWeek()
             return ViewController(targetDate)
         } else {
             return nil
@@ -31,7 +31,7 @@ extension HabitsPageViewController: UIPageViewControllerDataSource {
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if let viewController = viewController as? ViewController {
-            let targetDate = viewController.targetDate.dateByAdding(delta: 7)
+            let targetDate = viewController.targetDate.nextWeek()
             return ViewController(targetDate)
         } else {
             return nil

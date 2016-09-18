@@ -67,4 +67,13 @@ extension Date
         let calendar = Calendar.current
         return calendar.date(byAdding: .day, value: delta, to: self)!
     }
+
+    public func nextWeek() -> Date {
+        return dateByAdding(delta: 7)
+    }
+    public func lastWeek() -> Date {
+        return dateByAdding(delta: -7)
+    }
+
+
 }
