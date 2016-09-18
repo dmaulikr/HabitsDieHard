@@ -9,7 +9,6 @@
 import UIKit
 
 class WeeklyHeaderView: UIView {
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var mondayLabel: UILabel!
     @IBOutlet weak var tuesdayLabel: UILabel!
     @IBOutlet weak var wednesdayLabel: UILabel!
@@ -22,10 +21,7 @@ class WeeklyHeaderView: UIView {
     var targetDate: Date = Date() {
         didSet {
             let today = Date()
-            // update week label
             if targetDate.getSunday() == today.getSunday() {
-                label.text = "This Week"
-
                 // Highlight today
                 // this should not be called from initializer
                 if labels.isEmpty {
@@ -40,11 +36,6 @@ class WeeklyHeaderView: UIView {
                 let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
                 let components = calendar.dateComponents([.weekday], from: today)
                 labels[components.weekday! - 1].textColor = UIColor.orange
-
-            } else if (targetDate.getSunday() == Date().lastWeek().getSunday()) {
-                label.text = "Last Week"
-            } else {
-                label.text = "Week of \(targetDate.simpleDateKey())"
             }
         }
     }
