@@ -39,6 +39,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Todo
         // Save Habits
         // Make font smaller
+        // UIPageVC
+        //   Inherit
+        //   return new VC in the pagination
+        //   expose target date
+        //   adjust pagenated VC with the date
     }
 
     override func viewWillAppear(_ animated: Bool) {
