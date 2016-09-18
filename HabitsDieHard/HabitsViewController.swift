@@ -50,6 +50,9 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         assert(self.user != nil)
 
         // Todo
+        // UINavigationController
+        // +
+        // help message when empty
         // Save Habits
         // Make font smaller
     }
