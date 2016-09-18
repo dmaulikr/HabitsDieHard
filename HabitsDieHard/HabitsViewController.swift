@@ -52,7 +52,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         // Todo
         // Save Habits
         // Make font smaller
-        // make the UIPageView array consistent
     }
 
     override func viewWillAppear(_ animated: Bool) {
