@@ -55,7 +55,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // habit label shouldn't be selectable
         // rename viewcontroller
         // dayOfWeek
-        // add 7 and -7
         // show what week are we on
         // make the UIPageView array consistent
     }
