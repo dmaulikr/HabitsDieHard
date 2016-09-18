@@ -52,8 +52,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         // Todo
         // Save Habits
         // Make font smaller
-        // dayOfWeek
-        // show what week are we on
         // make the UIPageView array consistent
     }
 
