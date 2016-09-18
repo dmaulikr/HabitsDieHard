@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             initialViewController = LoginViewController()
         }
-        self.window?.rootViewController = initialViewController
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [initialViewController]
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         return true
     }

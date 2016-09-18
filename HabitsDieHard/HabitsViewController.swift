@@ -36,7 +36,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
 
         view.addSubview(weeklyTableView)
-        weeklyTableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        weeklyTableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
         weeklyTableView.register(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
@@ -51,6 +51,8 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
 
         // Todo
         // UINavigationController
+        // top spacing
+        // title should be in UINavC
         // +
         // help message when empty
         // Save Habits

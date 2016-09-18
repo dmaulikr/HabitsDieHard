@@ -40,8 +40,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                         print(error.localizedDescription)
                         return
                     } else {
-                        let viewController = HabitsPageViewController()
-                        UIApplication.shared.keyWindow?.rootViewController?.present(viewController, animated: true, completion: nil)
+                        self.navigationController?.viewControllers = [HabitsPageViewController()]
                     }
                 }
             } else {
