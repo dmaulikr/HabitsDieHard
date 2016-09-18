@@ -58,10 +58,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // Todo
-        //   Handle error
-        //   Move this to somewhere else
-        //   Change week
         self.loadHabits()
     }
 
