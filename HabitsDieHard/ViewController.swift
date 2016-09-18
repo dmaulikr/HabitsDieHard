@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController /*UIPageViewController*/, UITableViewDataSource, UITableViewDelegate /* , UIPageViewControllerDataSource*/ {
     fileprivate let habitCellIdentifier = "habitCell"
     fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
 
-    @IBOutlet weak var weeklyTableView: UITableView!
+    fileprivate let weeklyTableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
     let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
@@ -24,6 +24,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+//        dataSource = self
+
+        view.addSubview(weeklyTableView)
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
         weeklyTableView.register(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
@@ -140,5 +144,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: UIPageViewControllerDataSource    
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        return nil
+    }
+
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        return nil
+    }
+
 }
 

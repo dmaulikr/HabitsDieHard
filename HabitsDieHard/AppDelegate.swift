@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         var initialViewController: UIViewController!
         if let _ = FIRAuth.auth()?.currentUser {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "ViewController")
+            initialViewController = ViewController()
         } else {
             initialViewController = LoginViewController()
         }
