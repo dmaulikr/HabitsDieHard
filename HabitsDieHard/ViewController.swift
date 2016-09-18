@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
 
         view.addSubview(weeklyTableView)
+        weeklyTableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
         weeklyTableView.register(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)
