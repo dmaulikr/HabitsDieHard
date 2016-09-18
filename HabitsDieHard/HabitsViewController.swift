@@ -15,7 +15,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"
 
-    fileprivate let weeklyTableView = UITableView(frame: UIScreen.main.bounds, style: .plain)
+    fileprivate var weeklyTableView: UITableView!
     let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
@@ -34,9 +34,11 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        weeklyTableView = UITableView(frame: self.view.frame, style: .plain)
+        let topInset = 64
+        weeklyTableView.contentInset = UIEdgeInsetsMake(topInset, 0.0, 0.0, 0.0);
+        weeklyTableView.scrollIndicatorInsets = UIEdgeInsetsMake(topInset, 0.0, 0.0, 0.0);
         view.addSubview(weeklyTableView)
-        weeklyTableView.contentInset = UIEdgeInsetsMake(60, 0, 0, 0)
         weeklyTableView.delegate = self
         weeklyTableView.dataSource = self
         weeklyTableView.register(UINib(nibName: "WeeklyTableViewCell", bundle: nil), forCellReuseIdentifier: weeklyCellIdentifier)

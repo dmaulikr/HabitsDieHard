@@ -16,6 +16,7 @@ class HabitsPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewControllers([getViewContrller(byDate: Date())], direction: .forward, animated: true, completion: nil)
+        automaticallyAdjustsScrollViewInsets = false
         dataSource = self
     }
 
