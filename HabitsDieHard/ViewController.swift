@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HabitsViewController.swift
 //  HabitsDieHard
 //
 //  Created by Taro Minowa on 8/19/16.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     fileprivate let habitCellIdentifier = "habitCell"
     fileprivate let weeklyTitleCellIdentifier = "WeeklyTitleCellIdentifier"
     fileprivate let weeklyCellIdentifier = "WeeklyTableViewCell"

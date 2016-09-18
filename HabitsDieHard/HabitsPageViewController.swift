@@ -13,7 +13,7 @@ class HabitsPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewControllers([ViewController(Date())], direction: .forward, animated: true, completion: nil)
+        setViewControllers([HabitsViewController(Date())], direction: .forward, animated: true, completion: nil)
         dataSource = self
     }
 }
@@ -21,18 +21,18 @@ class HabitsPageViewController: UIPageViewController {
 extension HabitsPageViewController: UIPageViewControllerDataSource {
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let viewController = viewController as? ViewController {
+        if let viewController = viewController as? HabitsViewController {
             let targetDate = viewController.targetDate.lastWeek()
-            return ViewController(targetDate)
+            return HabitsViewController(targetDate)
         } else {
             return nil
         }
     }
 
     public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let viewController = viewController as? ViewController {
+        if let viewController = viewController as? HabitsViewController {
             let targetDate = viewController.targetDate.nextWeek()
-            return ViewController(targetDate)
+            return HabitsViewController(targetDate)
         } else {
             return nil
         }
