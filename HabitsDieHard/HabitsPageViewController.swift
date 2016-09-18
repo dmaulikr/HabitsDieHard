@@ -18,6 +18,19 @@ class HabitsPageViewController: UIPageViewController {
         setViewControllers([getViewContrller(byDate: Date())], direction: .forward, animated: true, completion: nil)
         automaticallyAdjustsScrollViewInsets = false
         dataSource = self
+        delegate = self
+        title = title(date: Date())
+    }
+
+    func title(date: Date) -> String {
+        let today = Date()
+        if date.getSunday() == today.getSunday() {
+            return "This Week"
+        } else if date.getSunday() == today.lastWeek().getSunday() {
+            return "Last Week"
+        } else {
+            return "Week of \(date.simpleDateKey())"
+        }
     }
 
     func getViewContrller(byDate: Date) -> HabitsViewController {
@@ -27,6 +40,14 @@ class HabitsPageViewController: UIPageViewController {
             let vc = HabitsViewController(byDate)
             dateToVC[byDate.simpleDateKey()] = vc
             return vc
+        }
+    }
+}
+
+extension HabitsPageViewController: UIPageViewControllerDelegate {
+    public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        if let vc = pendingViewControllers.first as? HabitsViewController {
+            title = title(date: vc.targetDate)
         }
     }
 }
