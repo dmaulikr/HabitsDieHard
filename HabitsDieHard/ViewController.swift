@@ -39,14 +39,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Todo
         // Save Habits
         // Make font smaller
-        // non-anonymous user support
-        // todo Save
     }
 
     override func viewWillAppear(_ animated: Bool) {
         // Todo
         //   Handle error
         //   Move this to somewhere else
+        //   Change week
         self.loadHabits()
     }
 
