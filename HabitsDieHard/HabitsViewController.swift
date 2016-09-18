@@ -52,7 +52,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         // Todo
         // Save Habits
         // Make font smaller
-        // habit label shouldn't be selectable
         // dayOfWeek
         // show what week are we on
         // make the UIPageView array consistent
@@ -150,7 +149,5 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_: UITableView, shouldHighlightRowAt: IndexPath) -> Bool {
         return false
     }
-
-
 }
 
