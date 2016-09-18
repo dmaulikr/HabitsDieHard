@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B3014FFA1D675001001D860F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3014FF91D675000001D860F /* AppDelegate.swift */; };
-		B3014FFC1D675001001D860F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3014FFB1D675001001D860F /* ViewController.swift */; };
+		B3014FFC1D675001001D860F /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3014FFB1D675001001D860F /* HabitsViewController.swift */; };
 		B3014FFF1D675001001D860F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3014FFD1D675001001D860F /* Main.storyboard */; };
 		B30150011D675001001D860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30150001D675001001D860F /* Assets.xcassets */; };
 		B30150041D675001001D860F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B30150021D675001001D860F /* LaunchScreen.storyboard */; };
@@ -35,7 +35,7 @@
 		A4CEE65341ECF71352690BB3 /* Pods-HabitsDieHard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitsDieHard.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabitsDieHard/Pods-HabitsDieHard.release.xcconfig"; sourceTree = "<group>"; };
 		B3014FF61D675000001D860F /* HabitsDieHard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitsDieHard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3014FF91D675000001D860F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3014FFB1D675001001D860F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3014FFB1D675001001D860F /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		B3014FFE1D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B30150001D675001001D860F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B30150031D675001001D860F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,23 +120,31 @@
 		B3014FF81D675000001D860F /* HabitsDieHard */ = {
 			isa = PBXGroup;
 			children = (
+				B30150001D675001001D860F /* Assets.xcassets */,
 				B3767F991D8C1B3900CCCC09 /* HabitsDieHard.entitlements */,
+				B320C50F1D8F427A007C7913 /* Views */,
 				B3A17B801D8B1269001737A2 /* Models */,
 				B3D426C81D6BC53100C3FAC5 /* NSDateExtensions.swift */,
 				B3014FF91D675000001D860F /* AppDelegate.swift */,
-				B3014FFB1D675001001D860F /* ViewController.swift */,
 				B3D9489C1D8D8B4500114BEE /* LoginViewController.swift */,
 				B3014FFD1D675001001D860F /* Main.storyboard */,
-				B30150001D675001001D860F /* Assets.xcassets */,
 				B30150021D675001001D860F /* LaunchScreen.storyboard */,
 				B30150051D675001001D860F /* Info.plist */,
+				B3014FFB1D675001001D860F /* HabitsViewController.swift */,
+				B320C50D1D8F3A70007C7913 /* HabitsPageViewController.swift */,
+			);
+			path = HabitsDieHard;
+			sourceTree = "<group>";
+		};
+		B320C50F1D8F427A007C7913 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				B3BAB00F1D68B95E00F20252 /* WeeklyTableViewCell.swift */,
 				B3BAB0101D68B95E00F20252 /* WeeklyTableViewCell.xib */,
 				B3D426CC1D6D07B100C3FAC5 /* WeeklyHeaderView.swift */,
 				B3D426CE1D6D07D300C3FAC5 /* WeeklyHeaderView.xib */,
-				B320C50D1D8F3A70007C7913 /* HabitsPageViewController.swift */,
 			);
-			path = HabitsDieHard;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B3A17B801D8B1269001737A2 /* Models */ = {
@@ -286,7 +294,7 @@
 				B3A17B7F1D8B0D55001737A2 /* HabitRepository.swift in Sources */,
 				B3BAB0081D68727D00F20252 /* Habit.swift in Sources */,
 				B3767F9B1D8C228D00CCCC09 /* HabitLog.swift in Sources */,
-				B3014FFC1D675001001D860F /* ViewController.swift in Sources */,
+				B3014FFC1D675001001D860F /* HabitsViewController.swift in Sources */,
 				B3D426C91D6BC53100C3FAC5 /* NSDateExtensions.swift in Sources */,
 				B328D33A1D7FC78E00DA0349 /* HabitLogRepository.swift in Sources */,
 				B3D426CD1D6D07B100C3FAC5 /* WeeklyHeaderView.swift in Sources */,
