@@ -51,9 +51,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         self.user = FIRAuth.auth()?.currentUser
         assert(self.user != nil)
 
-//        self.parent?.title = titleString()
         // Todo
-        // title should be in UINavC
         // +
         // help message when empty
         // Save Habits
