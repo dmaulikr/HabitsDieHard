@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -9,93 +9,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeeklyTableViewCell" rowHeight="99" id="KGk-i7-Jjw" customClass="WeeklyTableViewCell" customModule="HabitsDieHard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="399" height="99"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeeklyTableViewCell" rowHeight="142" id="KGk-i7-Jjw" customClass="WeeklyTableViewCell" customModule="HabitsDieHard" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="142"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="399" height="98.5"/>
+                <frame key="frameInset" width="399" height="141"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gq-En-3Qx"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-hd-NVv"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZX-NL-2Ox"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-Nk-avh"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wN5-km-tiK"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-Ae-FP9"/>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-Yy-As2"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="veo-To-4xo">
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-Yy-As2"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gq-En-3Qx"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TG1-hd-NVv"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZX-NL-2Ox"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-Nk-avh"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wN5-km-tiK"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-Ae-FP9"/>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="leading" secondItem="TG1-hd-NVv" secondAttribute="trailing" id="2TK-sH-Tyf"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3ox-Qv-L6S"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="1Gq-En-3Qx" secondAttribute="bottom" id="3uZ-hc-OCC"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="TG1-hd-NVv" secondAttribute="bottom" id="51b-T4-qIZ"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="5P4-eI-yzc"/>
-                    <constraint firstItem="1Gq-En-3Qx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="12" id="5gN-Eq-Uiz"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="leading" secondItem="wZX-NL-2Ox" secondAttribute="trailing" id="AV2-Mi-pMP"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="xxJ-Ae-FP9" secondAttribute="bottom" id="AVE-KA-3w0"/>
-                    <constraint firstItem="1Gq-En-3Qx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Ajk-gf-k5o"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="FAN-8v-gwr"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="1Gq-En-3Qx" secondAttribute="leading" id="FDo-ww-7w5"/>
-                    <constraint firstItem="wN5-km-tiK" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="Fgc-gW-TPy"/>
-                    <constraint firstAttribute="topMargin" secondItem="wN5-km-tiK" secondAttribute="top" id="GJ7-1Z-uRD"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Vqi-Yy-As2" secondAttribute="bottom" id="ICH-WU-Z9e"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="JCq-1r-agp"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="1Gq-En-3Qx" secondAttribute="bottom" constant="10.5" id="Jh8-GR-i7t"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="wZX-NL-2Ox" secondAttribute="bottom" id="LdS-Rl-qkX"/>
-                    <constraint firstItem="wZX-NL-2Ox" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="MLr-Zv-mWx"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="leading" secondItem="xxJ-Ae-FP9" secondAttribute="trailing" id="N8e-bI-iTM"/>
-                    <constraint firstItem="wN5-km-tiK" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="P3e-lb-04j"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Vqi-Yy-As2" secondAttribute="trailing" id="RJW-9e-2h6"/>
-                    <constraint firstItem="wZX-NL-2Ox" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="SFp-mg-Tdu"/>
-                    <constraint firstItem="1Gq-En-3Qx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Uaf-OJ-QFC"/>
-                    <constraint firstItem="wZX-NL-2Ox" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="UhD-Yy-Io1"/>
-                    <constraint firstItem="1Gq-En-3Qx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="V74-jV-lfp"/>
-                    <constraint firstItem="HTW-Nk-avh" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="a23-ru-U9I"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="leading" secondItem="1Gq-En-3Qx" secondAttribute="trailing" id="aEv-3u-SCe"/>
-                    <constraint firstItem="1Gq-En-3Qx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="afn-z3-Q9z"/>
-                    <constraint firstItem="wN5-km-tiK" firstAttribute="leading" secondItem="HTW-Nk-avh" secondAttribute="trailing" id="bLt-JY-YrD"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="bna-FS-zxh"/>
-                    <constraint firstAttribute="topMargin" secondItem="wZX-NL-2Ox" secondAttribute="top" id="eeP-Vk-Ntp"/>
-                    <constraint firstItem="wZX-NL-2Ox" firstAttribute="leading" secondItem="TG1-hd-NVv" secondAttribute="trailing" id="fgT-6C-UDz"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="wN5-km-tiK" secondAttribute="bottom" id="gXq-sM-07r"/>
-                    <constraint firstAttribute="topMargin" secondItem="HTW-Nk-avh" secondAttribute="top" id="h2L-Oz-QbD"/>
-                    <constraint firstItem="xxJ-Ae-FP9" firstAttribute="leading" secondItem="wN5-km-tiK" secondAttribute="trailing" id="iou-SA-5al"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="o5z-Kh-v4m"/>
-                    <constraint firstItem="xxJ-Ae-FP9" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="oRO-D7-Rn7"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pqM-om-aIP"/>
-                    <constraint firstItem="HTW-Nk-avh" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="qHg-ma-4hb"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="qSo-eE-gO7"/>
-                    <constraint firstItem="xxJ-Ae-FP9" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="rnK-7B-ybG"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="1Gq-En-3Qx" secondAttribute="bottom" id="ufb-b8-z1k"/>
-                    <constraint firstItem="TG1-hd-NVv" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="xCT-nO-4e9"/>
-                    <constraint firstItem="HTW-Nk-avh" firstAttribute="leading" secondItem="wZX-NL-2Ox" secondAttribute="trailing" id="xRk-le-xBr"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="HTW-Nk-avh" secondAttribute="bottom" id="y0F-hj-Yh1"/>
-                    <constraint firstAttribute="topMargin" secondItem="xxJ-Ae-FP9" secondAttribute="top" id="z09-it-gms"/>
-                    <constraint firstItem="Vqi-Yy-As2" firstAttribute="width" secondItem="1Gq-En-3Qx" secondAttribute="width" id="zNf-mx-NIB"/>
+                    <constraint firstItem="veo-To-4xo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Kd0-4S-iUH"/>
+                    <constraint firstItem="veo-To-4xo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="L1h-Zg-dMy"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="veo-To-4xo" secondAttribute="bottom" id="fJl-91-cBw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="veo-To-4xo" secondAttribute="trailing" id="haC-A5-cPb"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="5gN-Eq-Uiz"/>
-                        <exclude reference="Ajk-gf-k5o"/>
-                        <exclude reference="FDo-ww-7w5"/>
-                        <exclude reference="Jh8-GR-i7t"/>
-                        <exclude reference="afn-z3-Q9z"/>
-                        <exclude reference="ufb-b8-z1k"/>
-                        <exclude reference="5P4-eI-yzc"/>
-                        <exclude reference="JCq-1r-agp"/>
-                        <exclude reference="xCT-nO-4e9"/>
-                        <exclude reference="MLr-Zv-mWx"/>
-                        <exclude reference="UhD-Yy-Io1"/>
-                        <exclude reference="qHg-ma-4hb"/>
-                        <exclude reference="P3e-lb-04j"/>
-                        <exclude reference="rnK-7B-ybG"/>
-                        <exclude reference="2TK-sH-Tyf"/>
-                        <exclude reference="AV2-Mi-pMP"/>
-                        <exclude reference="o5z-Kh-v4m"/>
-                        <exclude reference="qSo-eE-gO7"/>
-                        <exclude reference="zNf-mx-NIB"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="fridayView" destination="wN5-km-tiK" id="yoG-kH-p2Q"/>
@@ -106,7 +44,7 @@
                 <outlet property="tuesdayView" destination="TG1-hd-NVv" id="d7f-ac-BdD"/>
                 <outlet property="wednesdayView" destination="wZX-NL-2Ox" id="N2T-Bc-0L8"/>
             </connections>
-            <point key="canvasLocation" x="300.5" y="402.5"/>
+            <point key="canvasLocation" x="300.5" y="381"/>
         </tableViewCell>
     </objects>
 </document>
