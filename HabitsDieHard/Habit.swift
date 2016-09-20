@@ -13,23 +13,30 @@ class Habit: CustomStringConvertible, Hashable {
 
     static let rootKey = "habits"
 
+    let userID: String
     let key: String
     let name: String
     
-    init(key: String, name: String) {
+    init(userID: String, key: String, name: String) {
+        self.userID = userID
         self.key = key
         self.name = name
+    }
+
+    convenience init(userID: String, name: String) {
+        let ref = FIRDatabase.database().reference()
+        let key = ref.child(Habit.rootKey).child(userID).childByAutoId().key
+        self.init(userID: userID, key: key, name: name)
     }
 
     var description: String { return "Habit {name:\(name)}" }
     var hashValue: Int { return Unmanaged.passUnretained(self).toOpaque().hashValue }
 
-// todo Save
-//    let ref = FIRDatabase.database().reference()
-//    let key = ref.child(Habit.rootKey).child(user!.uid).childByAutoId().key
-//    let value = [ "created_at": Date().simpleDateKey(), "name": "Swift"]
-//    ref.child("\(Habit.rootKey)/\(user!.uid)/\(key)").setValue(value)
-
+    func save() {
+        let ref = FIRDatabase.database().reference()
+        let value = [ "created_at": Date().simpleDateKey(), "name": name]
+        ref.child("\(Habit.rootKey)/\(userID)/\(key)").setValue(value)
+    }
 }
 
 func ==(lhs: Habit, rhs: Habit) -> Bool {

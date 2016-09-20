@@ -25,7 +25,7 @@ class HabitRepository {
             var habits: [Habit] = []
             for case let habitSnapshot as FIRDataSnapshot in snapshot.children {
                 if let habitDic = habitSnapshot.value as? [String: String] {
-                    habits.append(Habit(key: habitSnapshot.key, name: habitDic["name"]!))
+                    habits.append(Habit(userID: self.userID, key: habitSnapshot.key, name: habitDic["name"]!))
                 }
             }
             complition(habits, nil)

@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HabitsPageViewController: UIPageViewController {
 
     fileprivate var dateToVC: [String: HabitsViewController] = [:]
+    fileprivate var user: FIRUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,9 @@ class HabitsPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         title = title(date: Date())
+
+        self.user = FIRAuth.auth()?.currentUser
+        assert(self.user != nil)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
@@ -34,7 +39,8 @@ class HabitsPageViewController: UIPageViewController {
             if let textFields = alertController.textFields {
                 if let text = textFields[0].text {
                     if !text.isEmpty {
-                        // save!
+                        let habit = Habit(userID: self.user!.uid , name: text)
+                        habit.save()
                     }
                 }
             }
