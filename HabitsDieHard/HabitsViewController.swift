@@ -61,7 +61,7 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         // Pull to refresh
     }
 
-    private func loadHabits() {
+    public func loadHabits() {
         if user != nil {
 
             // todo Save

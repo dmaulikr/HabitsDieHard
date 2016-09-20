@@ -39,8 +39,16 @@ class HabitsPageViewController: UIPageViewController {
             if let textFields = alertController.textFields {
                 if let text = textFields[0].text {
                     if !text.isEmpty {
-                        let habit = Habit(userID: self.user!.uid , name: text)
-                        habit.save()
+                        let habit = Habit(userID: self.user!.uid, name: text)
+                        habit.save({ (error) in
+                            if error == nil {
+                                if let vc = self.viewControllers![0] as? HabitsViewController {
+                                    vc.loadHabits()
+                                }
+                            } else {
+                                // todo
+                            }
+                        })
                     }
                 }
             }
