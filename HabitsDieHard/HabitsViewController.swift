@@ -51,15 +51,14 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         self.user = FIRAuth.auth()?.currentUser
         assert(self.user != nil)
 
+        self.loadHabits()
+
         // Todo
         // +
         // help message when empty
         // Save Habits
         // Make font smaller
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.loadHabits()
+        // Pull to refresh
     }
 
     private func loadHabits() {

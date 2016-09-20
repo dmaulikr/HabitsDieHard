@@ -25,13 +25,13 @@ class WeeklyHeaderView: UIView {
                 // Highlight today
                 // this should not be called from initializer
                 if labels.isEmpty {
+                    labels.append(sundayLabel)
                     labels.append(mondayLabel)
                     labels.append(tuesdayLabel)
                     labels.append(wednesdayLabel)
                     labels.append(thursdayLabel)
                     labels.append(fridayLabel)
                     labels.append(saturdayLabel)
-                    labels.append(sundayLabel)
                 }
                 let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
                 let components = calendar.dateComponents([.weekday], from: today)

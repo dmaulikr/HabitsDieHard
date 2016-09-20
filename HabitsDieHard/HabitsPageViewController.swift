@@ -26,7 +26,35 @@ class HabitsPageViewController: UIPageViewController {
 
     func addTapped() {
 
+        let alertController = UIAlertController(title: "Add New Habit", message: "", preferredStyle: UIAlertControllerStyle.alert)
+
+        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+
+            if let textFields = alertController.textFields {
+                if let text = textFields[0].text {
+                    if !text.isEmpty {
+                        // save!
+                    }
+                }
+            }
+            // todo error case
+        })
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+            (action : UIAlertAction!) -> Void in
+        })
+
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Habit Name"
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        self.present(alertController, animated: true, completion: nil)
     }
+
 
     func title(date: Date) -> String {
         let today = Date()
