@@ -54,9 +54,6 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         self.loadHabits()
 
         // Todo
-        // +
-        // help message when empty
-        // Save Habits
         // Make font smaller
         // Pull to refresh
     }
