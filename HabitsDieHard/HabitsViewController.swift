@@ -63,43 +63,45 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
 
     public func loadHabits() {
         if user != nil {
-
-            // todo Save
-/*
-            let ref = FIRDatabase.database().reference()
-            let key = ref.child(Habit.rootKey).child(user!.uid).childByAutoId().key
-            ref.child("\(Habit.rootKey)/\(user!.uid)/\(key)").setValue([ "created_at": Date().simpleDateKey(), "name": "Jogging"])
-
-            let ref2 = FIRDatabase.database().reference()
-            let key2 = ref2.child(Habit.rootKey).child(user!.uid).childByAutoId().key
-            ref2.child("\(Habit.rootKey)/\(user!.uid)/\(key2)").setValue([ "created_at": Date().simpleDateKey(), "name": "Swift"])
-*/
             self.activityIndicatorView.startAnimating()
             HabitRepository(userID: user!.uid).getHabits { (habits, error) in
                 self.habits = habits
                 let startDate = self.targetDate.getSunday()
                 let endDate = startDate.dateByAdding(delta: 6)
                 for habit in habits {
-                    HabitLogRepository(userID: self.user!.uid).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
-                        if error == nil {
-                            self.habitToLog[habit] = habitLogs
-                            self.weeklyTableView.reloadData()
-                        } else {
-                            // todo
+                    if habits.isEmpty {
+                        self.weeklyTableView.reloadData()
+
+                    } else {
+                        HabitLogRepository(userID: self.user!.uid).getFilledRangeWithHabit(habit, startDate: startDate, endDate: endDate) { (habitLogs, error) in
+                            if error == nil {
+                                self.habitToLog[habit] = habitLogs
+                                self.weeklyTableView.reloadData()
+                            } else {
+                                // todo
+                            }
                         }
-                        self.activityIndicatorView.stopAnimating()
                     }
+                    self.activityIndicatorView.stopAnimating()
                 }
             }
         }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return habits.count
+        if habits.isEmpty {
+            return 1
+        } else {
+            return habits.count
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2;
+        if habits.isEmpty {
+            return 1
+        } else {
+            return 2
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -124,18 +126,28 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: weeklyTitleCellIdentifier, for: indexPath)
-            cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-            cell.textLabel?.text = habits[(indexPath as NSIndexPath).section].name
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: weeklyCellIdentifier, for: indexPath) as! WeeklyTableViewCell
-            let habit: Habit = habits[indexPath.section]
-            if let habitLogs: [HabitLog] = habitToLog[habit] {
-                cell.habitLogsForTargetWeek = habitLogs
+        if habits.isEmpty {
+            let reuseIdentifier = "EmptyHabitsCell"
+            var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: reuseIdentifier)
             }
-            return cell
+            cell?.textLabel?.text = "Please add your habits from + button"
+            return cell!
+        } else {
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: weeklyTitleCellIdentifier, for: indexPath)
+                cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+                cell.textLabel?.text = habits[(indexPath as NSIndexPath).section].name
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: weeklyCellIdentifier, for: indexPath) as! WeeklyTableViewCell
+                let habit: Habit = habits[indexPath.section]
+                if let habitLogs: [HabitLog] = habitToLog[habit] {
+                    cell.habitLogsForTargetWeek = habitLogs
+                }
+                return cell
+            }
         }
     }
 
