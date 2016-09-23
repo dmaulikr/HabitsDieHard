@@ -14,10 +14,14 @@ class HabitsPageViewController: UIPageViewController {
 
     fileprivate var dateToVC: [String: HabitsViewController] = [:]
     fileprivate var user: FIRUser?
+    fileprivate var currentViewController: UIViewController?
+    fileprivate weak var savedDataSource: UIPageViewControllerDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViewControllers([getViewContrller(byDate: Date())], direction: .forward, animated: true, completion: nil)
+        let viewController = getViewContrller(byDate: Date())
+        currentViewController = viewController
+        setViewControllers([viewController], direction: .forward, animated: true, completion: nil)
         automaticallyAdjustsScrollViewInsets = false
         dataSource = self
         delegate = self
@@ -27,6 +31,21 @@ class HabitsPageViewController: UIPageViewController {
         assert(self.user != nil)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if let habitsViewController = currentViewController as? HabitsViewController {
+            // disable swipe while editing
+            if editing {
+                savedDataSource = dataSource
+                dataSource = nil
+            } else {
+                dataSource = savedDataSource
+            }
+            habitsViewController.setWeeklyTableEditing(editing: editing)
+        }
     }
 
     func addTapped() {
@@ -88,6 +107,12 @@ class HabitsPageViewController: UIPageViewController {
             let vc = HabitsViewController(byDate)
             dateToVC[byDate.simpleDateKey()] = vc
             return vc
+        }
+    }
+
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            currentViewController = pageViewController
         }
     }
 }

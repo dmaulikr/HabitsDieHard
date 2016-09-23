@@ -17,10 +17,12 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
 
     fileprivate var weeklyTableView: UITableView!
     let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     fileprivate var habits: [Habit] = []
     fileprivate var habitToLog: [Habit: [HabitLog]] = [:]
     fileprivate let firstSection = 0
     fileprivate var user: FIRUser?
+    fileprivate var isLoading: Bool = false
     let targetDate: Date
 
     init(_ targetDate: Date) {
@@ -56,11 +58,17 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
         // Todo
         // Make font smaller
         // Pull to refresh
+        // design
+    }
+
+    public func setWeeklyTableEditing(editing: Bool) {
+        weeklyTableView.isEditing = editing
     }
 
     public func loadHabits() {
-        if user != nil {
+        if user != nil && !isLoading {
             self.activityIndicatorView.startAnimating()
+            isLoading = true
             HabitRepository(userID: user!.uid).getHabits { (habits, error) in
                 self.habits = habits
                 let startDate = self.targetDate.getSunday()
@@ -79,14 +87,32 @@ class HabitsViewController: UIViewController, UITableViewDataSource, UITableView
                             }
                         }
                     }
+                    self.isLoading = false
                     self.activityIndicatorView.stopAnimating()
                 }
             }
         }
     }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let habitToRemove = habits.remove(at: indexPath.section)
+            habitToLog.removeValue(forKey: habitToRemove)
+            habitToRemove.remove()
+            tableView.reloadData()
+        }
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        if habits.isEmpty {
+        if habits.isEmpty && !isLoading {
             return 1
         } else {
             return habits.count

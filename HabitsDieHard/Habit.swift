@@ -32,13 +32,20 @@ class Habit: CustomStringConvertible, Hashable {
     var description: String { return "Habit {name:\(name)}" }
     var hashValue: Int { return Unmanaged.passUnretained(self).toOpaque().hashValue }
 
-    func save(_ completion: @escaping (Error?) -> Void) {
+    private func habitRef() -> FIRDatabaseReference {
         let ref = FIRDatabase.database().reference()
+        return ref.child("\(Habit.rootKey)/\(userID)/\(key)")
+    }
+
+    func save(_ completion: @escaping (Error?) -> Void) {
         let value = [ "created_at": Date().simpleDateKey(), "name": name]
-        let habitRef = ref.child("\(Habit.rootKey)/\(userID)/\(key)")
-        habitRef.setValue(value) { (error, databaseRef) in
+        habitRef().setValue(value) { (error, databaseRef) in
             completion(error)
         }
+    }
+
+    func remove() {
+        habitRef().removeValue()
     }
 }
 
